@@ -1,0 +1,22 @@
+apiVersion: services.miloapis.com/v1alpha1
+kind: ServiceConfiguration
+metadata:
+  name: interconnect
+spec:
+  serviceRef:
+    name: interconnect
+  phase: Published
+  # Consumer-side portal plugin (cloud-portal): bare-bones scaffold, no pages
+  # yet — see ui/consumer/. Hosted internally only — config/components/
+  # consumer-ui-plugin (folded into interconnect-manager's own Deployment
+  # set), never fronted by a public Gateway/HTTPRoute. cloud-portal's server
+  # is the only caller, over this in-cluster Service DNS name.
+  userInterface:
+    consumer:
+      assets:
+        baseURL: https://interconnect-consumer-ui-plugin.interconnect-system.svc.cluster.local
+      visibility:
+        entitlement: None
+  locations:
+    supportedClasses:
+    - datum-managed
