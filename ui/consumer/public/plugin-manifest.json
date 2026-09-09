@@ -1,0 +1,26 @@
+{
+  "name": "interconnect.datumapis.com",
+  "version": "0.1.0",
+  "sdk": {
+    "name": "@datum-cloud/portal-plugin-sdk",
+    "range": "^1.0.0"
+  },
+  "remoteEntry": "remoteEntry.js",
+  "exposedModules": {},
+  "extensions": [
+    {
+      "type": "portal.nav/project",
+      "properties": {
+        "id": "interconnect",
+        "title": "Interconnect",
+        "icon": "network",
+        "path": "interconnect",
+        "order": 10,
+        "section": "build",
+        "comingSoon": true,
+        "comingSoonMode": "plugin",
+        "serviceRef": "interconnect.datumapis.com"
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+# UI consumer/provider plugins (own package.json/build per plugin)
+ui/**/node_modules/
+ui/**/dist/
+ui/**/.mf/
+
+# env file
+.env
