@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-# interconnect
-
-Datum Cloud interconnect service.
-
-## Layout
-
-- `ui/consumer/` — consumer-side Portal Plugin (`ConsumerPortalPlugin`) for
-  the interconnect service, loaded by [cloud-portal](https://github.com/datum-cloud/cloud-portal)
-  at runtime. Bare-bones scaffold — see its README for details.
-=======
 # Datum Interconnect: The Neutral Virtual Meet-Me Room (vMMR) for the AI & Multi-Cloud Era
 
 > **A unified, software-defined interconnection platform connecting Neoclouds, Hyperscalers, and Last-Mile Providers across Dynamic Tunnels—delivering seamless Private VPC Backbones and Public Internet Transit.**
@@ -810,4 +799,3 @@ Datum Interconnect redefines cloud networking by replacing physical patch panels
 - **Galactic SRv6 & Gateway Data Plane**: [`galactic/`](file:///home/darragh/dev/proj/datum/galactic/)
 - **Network Services Operator CRDs**: [`network-services-operator/`](file:///home/darragh/dev/proj/datum/network-services-operator/)
 - **Datum Website Product Specification**: [`datum.net-website/src/pages/platform/connect.astro`](file:///home/darragh/dev/proj/datum/datum.net-website/src/pages/platform/connect.astro)
->>>>>>> 44fbde5 (kicking off interconnect repo)
