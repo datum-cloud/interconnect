@@ -6,7 +6,9 @@
     "range": "^1.0.0"
   },
   "remoteEntry": "remoteEntry.js",
-  "exposedModules": {},
+  "exposedModules": {
+    "Assistant": "./src/pages/assistant.tsx"
+  },
   "extensions": [
     {
       "type": "portal.nav/project",
@@ -20,6 +22,13 @@
         "comingSoon": true,
         "comingSoonMode": "plugin",
         "serviceRef": "interconnect.datumapis.com"
+      }
+    },
+    {
+      "type": "portal.page/project",
+      "properties": {
+        "path": "assistant",
+        "component": { "$codeRef": "Assistant" }
       }
     }
   ]
