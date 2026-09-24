@@ -1,0 +1,398 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" modified="2026-09-03T20:30:00.000Z" agent="Datum Architecture Engine" version="24.0.0" type="device">
+  <diagram id="diagram-1" name="1. Ecosystem Overview - Virtual Meet-Me Room">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1150" background="#0F172A" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;b&gt;&lt;font size='5' color='#F8FAFC'&gt;DATUM INTERCONNECT: THE NEUTRAL VIRTUAL MEET-ME ROOM (vMMR)&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font color='#94A3B8' size='3'&gt;Unified Private &amp;amp; Public Transit across Neoclouds, Hyperscalers, and Last-Mile Providers via Dynamic Tunnels&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#334155;fontColor=#FFFFFF;align=center;" parent="1" vertex="1">
+          <mxGeometry x="40" y="30" width="1840" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="&lt;b&gt;&lt;font size='3' color='#DDD6FE'&gt;NEOCLOUDS &amp;amp; AI COMPUTE CLOUDS&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font color='#A78BFA' size='2'&gt;High-Density GPU Clusters • Foundation Model Training • Inference Engines&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#2E1065;strokeColor=#8B5CF6;strokeWidth=2;verticalAlign=top;align=center;opacity=90;" parent="1" vertex="1">
+          <mxGeometry x="50" y="130" width="480" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="&lt;b&gt;CoreWeave / Lambda / Nebius / Together AI&lt;/b&gt;&lt;br/&gt;&lt;font color='#C4B5FD'&gt;• 10k+ GPU Clusters (H100/B200)&lt;br/&gt;• Fast RoCEv2 / InfiniBand Fabric&lt;br/&gt;• Rapid compute scaling&lt;br/&gt;&lt;b&gt;Challenge:&lt;/b&gt; Siloed network, steep egress fees, no native private path to enterprise data.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#3B0764;strokeColor=#7C3AED;fontColor=#EDE9FE;align=left;" parent="1" vertex="1">
+          <mxGeometry x="70" y="200" width="440" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="&lt;b&gt;Workloads &amp;amp; Endpoints&lt;/b&gt;&lt;br/&gt;&lt;font color='#C4B5FD'&gt;• Distributed PyTorch / vLLM workers&lt;br/&gt;• Checkpoint streaming pipelines&lt;br/&gt;• Model serving APIs&lt;br/&gt;• Internal RFC 4193 ULA / Private IPs&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#3B0764;strokeColor=#7C3AED;fontColor=#EDE9FE;align=left;" parent="1" vertex="1">
+          <mxGeometry x="70" y="320" width="440" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="&lt;b&gt;datum-connect Daemon / Galactic Node&lt;/b&gt;&lt;br/&gt;&lt;font color='#DDD6FE'&gt;• Headless Rust daemon + Go supervisor&lt;br/&gt;• Iroh P2P QUIC + MASQUE CONNECT-IP&lt;br/&gt;• Zero-config dynamic peering via ed25519 identity&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#4C1D95;strokeColor=#A855F7;fontColor=#FFFFFF;strokeWidth=2;align=left;" parent="1" vertex="1">
+          <mxGeometry x="70" y="435" width="440" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="&lt;b&gt;&lt;font size='3' color='#FED7AA'&gt;HYPERSCALERS &amp;amp; ENTERPRISE CLOUDS&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font color='#FB923C' size='2'&gt;Enterprise Data Lakes • Identity • Relational Databases • Mission-Critical SaaS&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#451A03;strokeColor=#F59E0B;strokeWidth=2;verticalAlign=top;align=center;opacity=90;" parent="1" vertex="1">
+          <mxGeometry x="1390" y="130" width="480" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="&lt;b&gt;AWS / GCP / Microsoft Azure / OCI&lt;/b&gt;&lt;br/&gt;&lt;font color='#FDE68A'&gt;• Amazon S3 Training Lakes, RDS, Aurora&lt;br/&gt;• Google BigQuery &amp;amp; Vertex AI Services&lt;br/&gt;• Azure Entra ID / Corporate Active Directory&lt;br/&gt;&lt;b&gt;Challenge:&lt;/b&gt; Vendor lock-in, proprietary interconnects (DirectConnect/ExpressRoute), egress tax.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#78350F;strokeColor=#D97706;fontColor=#FEF3C7;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1410" y="200" width="440" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="&lt;b&gt;Hyperscaler VPCs &amp;amp; Transit Gateways&lt;/b&gt;&lt;br/&gt;&lt;font color='#FDE68A'&gt;• AWS TGW / Private Subnets (172.31.0.0/16)&lt;br/&gt;• GCP Cloud Routers &amp;amp; Interconnect Attachments&lt;br/&gt;• Azure ExpressRoute Gateways&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#78350F;strokeColor=#D97706;fontColor=#FEF3C7;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1410" y="320" width="440" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="&lt;b&gt;Interconnect Gateway / Partner Tunnel&lt;/b&gt;&lt;br/&gt;&lt;font color='#FED7AA'&gt;• High-speed BGP Peering (802.1Q VLANs)&lt;br/&gt;• Dynamic IPsec / WireGuard / MASQUE gateway&lt;br/&gt;• Automated BGP route synchronization&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#92400E;strokeColor=#F59E0B;fontColor=#FFFFFF;strokeWidth=2;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1410" y="435" width="440" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="&lt;b&gt;&lt;font size='3' color='#A7F3D0'&gt;LAST-MILE PROVIDERS &amp;amp; ENTERPRISE EDGE&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font color='#34D399' size='2'&gt;Private Datacenters • Healthcare &amp;amp; Finance On-Prem • Telco MEC • Dev Endpoints&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#064E3B;strokeColor=#10B981;strokeWidth=2;verticalAlign=top;align=center;opacity=90;" parent="1" vertex="1">
+          <mxGeometry x="50" y="650" width="480" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="&lt;b&gt;Enterprise On-Premises &amp;amp; Local Edge&lt;/b&gt;&lt;br/&gt;&lt;font color='#D1FAE5'&gt;• HIPAA/PCI Compliant Private Storage&lt;br/&gt;• Manufacturing IoT / Hospital PACS servers&lt;br/&gt;• Telco 5G User Plane Functions (UPF)&lt;br/&gt;• Developer laptops running datumctl&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#065F46;strokeColor=#059669;fontColor=#ECFDF5;align=left;" parent="1" vertex="1">
+          <mxGeometry x="70" y="720" width="440" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="&lt;b&gt;Edge Security &amp;amp; Firewall Reality&lt;/b&gt;&lt;br/&gt;&lt;font color='#D1FAE5'&gt;• Strict corporate NAT &amp;amp; stateful firewalls&lt;br/&gt;• No inbound public IP or port forwarding&lt;br/&gt;• Outbound restricted to UDP 443 / HTTPS&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#065F46;strokeColor=#059669;fontColor=#ECFDF5;align=left;" parent="1" vertex="1">
+          <mxGeometry x="70" y="840" width="440" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="&lt;b&gt;datumctl-connect (Rust + Go) Client&lt;/b&gt;&lt;br/&gt;&lt;font color='#A7F3D0'&gt;• Iroh UDP STUN NAT hole punching&lt;br/&gt;• Fallback to global relay network&lt;br/&gt;• Establishes full L3 IP tunnel (CONNECT-IP)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#047857;strokeColor=#10B981;fontColor=#FFFFFF;strokeWidth=2;align=left;" parent="1" vertex="1">
+          <mxGeometry x="70" y="955" width="440" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="&lt;b&gt;&lt;font size='3' color='#FECDD3'&gt;PUBLIC INTERNET TRANSIT &amp;amp; EXTERNAL CLIENTS&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font color='#FB7185' size='2'&gt;Tier-1 Transit Providers • Global Anycast Ingress • Mobile &amp;amp; Browser Access&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#4C0519;strokeColor=#F43F5E;strokeWidth=2;verticalAlign=top;align=center;opacity=90;" parent="1" vertex="1">
+          <mxGeometry x="1390" y="650" width="480" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="&lt;b&gt;External Users, Mobile &amp;amp; Web Clients&lt;/b&gt;&lt;br/&gt;&lt;font color='#FFE4E6'&gt;• Mobile apps &amp;amp; WebTransport clients&lt;br/&gt;• End consumers hitting inference APIs&lt;br/&gt;• External SaaS API integrations&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#881337;strokeColor=#E11D48;fontColor=#FFF1F2;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1410" y="720" width="440" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="&lt;b&gt;Tier-1 IP Upstreams &amp;amp; Peering Exchanges&lt;/b&gt;&lt;br/&gt;&lt;font color='#FFE4E6'&gt;• Netactuate, Equinix IX, Telia, Lumen, Cogent&lt;br/&gt;• Low-latency internet routing to regional eyeballing networks&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#881337;strokeColor=#E11D48;fontColor=#FFF1F2;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1410" y="840" width="440" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="&lt;b&gt;Datum Public Transit Gateway&lt;/b&gt;&lt;br/&gt;&lt;font color='#FECDD3'&gt;• Anycast IPv4/IPv6 BGP edge routing&lt;br/&gt;• Stateful sharded NAT66 masquerade egress&lt;br/&gt;• OWASP Core Rule Set WAF &amp;amp; DDoS shielding&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#9F1239;strokeColor=#F43F5E;fontColor=#FFFFFF;strokeWidth=2;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1410" y="955" width="440" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="&lt;b&gt;&lt;font size='4' color='#38BDF8'&gt;DATUM GLOBAL INTERCONNECT: VIRTUAL MEET-ME ROOM (vMMR)&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font color='#94A3B8'&gt;17+ Global Edge PoPs • Ashburn • Silicon Valley • Dallas • Frankfurt • London • Amsterdam • Singapore • Tokyo • Sydney&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#0B192C;strokeColor=#0284C7;strokeWidth=3;verticalAlign=top;align=center;dashPattern=5 5;" parent="1" vertex="1">
+          <mxGeometry x="570" y="130" width="780" height="960" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="&lt;b&gt;DYNAMIC TUNNEL TERMINATION TIER (Iroh + MASQUE)&lt;/b&gt;&lt;br/&gt;&lt;font color='#93C5FD' size='2'&gt;Zero-Config Cryptographic Ingress • P2P Hole-Punching • Global Iroh Relays • RFC 9484 CONNECT-IP&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E3A8A;strokeColor=#3B82F6;strokeWidth=2;fontColor=#BFDBFE;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="600" y="210" width="720" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="&lt;b&gt;Iroh P2P Engine&lt;/b&gt;&lt;br/&gt;&lt;font size='1'&gt;• ed25519 node crypto keys&lt;br/&gt;• STUN UDP hole-punching&lt;br/&gt;• 0-RTT direct peer links&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#172554;strokeColor=#60A5FA;fontColor=#DBEAFE;" parent="1" vertex="1">
+          <mxGeometry x="620" y="265" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="&lt;b&gt;Global Iroh Relays&lt;/b&gt;&lt;br/&gt;&lt;font size='1'&gt;• MASQUE CONNECT-UDP relay&lt;br/&gt;• Guaranteed NAT fallback&lt;br/&gt;• Per-site /48 IPv6 routable&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#172554;strokeColor=#60A5FA;fontColor=#DBEAFE;" parent="1" vertex="1">
+          <mxGeometry x="855" y="265" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="23" value="&lt;b&gt;MASQUE Gateways&lt;/b&gt;&lt;br/&gt;&lt;font size='1'&gt;• RFC 9484 CONNECT-IP&lt;br/&gt;• Full L3 IP tunneling&lt;br/&gt;• Dynamic IP &amp;amp; route assign&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#172554;strokeColor=#60A5FA;fontColor=#DBEAFE;" parent="1" vertex="1">
+          <mxGeometry x="1090" y="265" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="24" value="&lt;b&gt;GALACTIC VPC PRIVATE TRANSIT BACKBONE (SRv6 uSID + VRF)&lt;/b&gt;&lt;br/&gt;&lt;font color='#A5B4FC' size='2'&gt;True Multi-Tenant Kernel Isolation • Segment Routing IPv6 Micro-SIDs • BGP EVPN Overlay&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#312E81;strokeColor=#6366F1;strokeWidth=2;fontColor=#E0E7FF;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="600" y="390" width="720" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="25" value="&lt;b&gt;SRv6 Micro-SID (uSID) Datapath&lt;/b&gt;&lt;br/&gt;&lt;font size='1'&gt;• Encapsulates client packets into IPv6 SRH&lt;br/&gt;• Deterministic policy-based routing&lt;br/&gt;• Zero overlay encapsulation overhead (TC-eBPF)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E1B4B;strokeColor=#818CF8;fontColor=#EEF2FF;" parent="1" vertex="1">
+          <mxGeometry x="620" y="445" width="330" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="26" value="&lt;b&gt;Linux Kernel VRF Isolation&lt;/b&gt;&lt;br/&gt;&lt;font size='1'&gt;• Cryptographic &amp;amp; routing table partition per tenant&lt;br/&gt;• Overlapping RFC 1918 / 4193 IP support&lt;br/&gt;• Strict tenant-to-tenant isolation&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E1B4B;strokeColor=#818CF8;fontColor=#EEF2FF;" parent="1" vertex="1">
+          <mxGeometry x="970" y="445" width="330" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="27" value="&lt;b&gt;Control Plane: GoBGP + FRR Fabric&lt;/b&gt;&lt;br/&gt;&lt;font size='1'&gt;• Multi-cluster EVPN L3VPN route exchange • Distributed Route Reflectors (RR)&lt;br/&gt;• Fast convergence &amp;amp; sub-second BFD failover across 17+ global PoPs&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E1B4B;strokeColor=#818CF8;fontColor=#EEF2FF;" parent="1" vertex="1">
+          <mxGeometry x="620" y="535" width="680" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="28" value="&lt;b&gt;EDGE INGRESS &amp;amp; PUBLIC TRANSIT ENGINES (XDP + Maglev + NAT66)&lt;/b&gt;&lt;br/&gt;&lt;font color='#FDE047' size='2'&gt;High-Performance eBPF Datapath • Line-Rate DSR Load Balancing • Stateful Outbound Transit&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#422006;strokeColor=#EAB308;strokeWidth=2;fontColor=#FEF08A;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="600" y="650" width="720" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="29" value="&lt;b&gt;Stateless Maglev DSR (galactic-gateway)&lt;/b&gt;&lt;br/&gt;&lt;font size='1'&gt;• Line-rate XDP L4 load balancer&lt;br/&gt;• Consistent hashing across backends&lt;br/&gt;• Direct Server Return (DSR) bypasses return bottleneck&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#713F12;strokeColor=#FACC15;fontColor=#FEF9C3;" parent="1" vertex="1">
+          <mxGeometry x="620" y="705" width="330" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="30" value="&lt;b&gt;Stateful Sharded NAT66 (galactic-nat66)&lt;/b&gt;&lt;br/&gt;&lt;font size='1'&gt;• Masquerades private ULA/VPC IPs to public IPs&lt;br/&gt;• LRU-hashed atomic SNAT connection tracking&lt;br/&gt;• High-throughput outbound internet transit&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#713F12;strokeColor=#FACC15;fontColor=#FEF9C3;" parent="1" vertex="1">
+          <mxGeometry x="970" y="705" width="330" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="31" value="&lt;b&gt;Envoy Gateway + OWASP ModSecurity WAF + ACME TLS&lt;/b&gt;&lt;br/&gt;&lt;font size='1'&gt;• Layer 7 HTTPProxy &amp;amp; HTTPRoute routing • Automatic Let's Encrypt TLS certificates&lt;br/&gt;• Core Rule Set (CRS) Layer 7 attack filtering &amp;amp; DDoS rate limiting&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#713F12;strokeColor=#FACC15;fontColor=#FEF9C3;" parent="1" vertex="1">
+          <mxGeometry x="620" y="795" width="680" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="32" value="&lt;b&gt;KUBERNETES-NATIVE DECLARATIVE CONTROL PLANE (NSO &amp;amp; Galactic CRDs)&lt;/b&gt;&lt;br/&gt;&lt;font color='#6EE7B7' size='1'&gt;networking.datumapis.com: Connector • ConnectorClass • ConnectorAdvertisement • ConnectorAttachment&lt;br/&gt;NetworkInterfaceClaim • NetworkGateway • NetworkRule • TrafficProtectionPolicy • BGPRouter&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#064E3B;strokeColor=#10B981;strokeWidth=2;fontColor=#D1FAE5;align=center;" parent="1" vertex="1">
+          <mxGeometry x="600" y="880" width="720" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="33" value="Dynamic QUIC / MASQUE&lt;br/&gt;(P2P or Relay)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#A855F7;strokeWidth=3;fontColor=#E2E8F0;fontSize=11;" parent="1" edge="1" source="6" target="20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="34" value="Iroh Hole-Punch /&lt;br/&gt;MASQUE CONNECT-IP" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#10B981;strokeWidth=3;fontColor=#E2E8F0;fontSize=11;" parent="1" edge="1" source="14" target="20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="35" value="VRF Injection /&lt;br/&gt;SRv6 Micro-SID Encapsulation" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#38BDF8;strokeWidth=3;fontColor=#E2E8F0;fontSize=11;" parent="1" edge="1" source="20" target="24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="36" value="Private Transit (SRv6 / BGP)&lt;br/&gt;DirectConnect / Partner VIF" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#F59E0B;strokeWidth=3;fontColor=#E2E8F0;fontSize=11;" parent="1" edge="1" source="24" target="10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="37" value="Default Route&lt;br/&gt;(egress_sid)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#EAB308;strokeWidth=3;fontColor=#E2E8F0;fontSize=11;" parent="1" edge="1" source="24" target="28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="38" value="BGP Per-Site /48 &amp;amp;&lt;br/&gt;Anycast IPv4/IPv6 Transit" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#F43F5E;strokeWidth=3;fontColor=#E2E8F0;fontSize=11;" parent="1" edge="1" source="28" target="18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="diagram-2" name="2. Architecture &amp; Protocol Stack">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1850" pageHeight="1100" background="#0F172A" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;b&gt;&lt;font size='5' color='#F8FAFC'&gt;DATUM INTERCONNECT: LAYERED CONTROL &amp;amp; DATA PLANE STACK&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font color='#94A3B8' size='3'&gt;Decoupled Architecture from Declarative Intent down to eBPF/XDP Kernel Datapaths&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#334155;fontColor=#FFFFFF;align=center;" parent="1" vertex="1">
+          <mxGeometry x="40" y="30" width="1770" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="&lt;b&gt;LAYER 1: WORKLOADS &amp;amp; USER INTENT&lt;/b&gt;&lt;br/&gt;&lt;font color='#94A3B8' size='2'&gt;Kubernetes Pods, VMs, Neocloud GPU Nodes, Developer Desktops, Enterprise Servers&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#475569;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="50" y="130" width="1750" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="&lt;b&gt;Neocloud AI Workload&lt;/b&gt;&lt;br/&gt;Pod / Host with 8x H100 GPUs&lt;br/&gt;Emits training sync &amp;amp; model API calls" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#2E1065;strokeColor=#7C3AED;fontColor=#EDE9FE;" parent="1" vertex="1">
+          <mxGeometry x="70" y="175" width="380" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="&lt;b&gt;NetworkInterfaceClaim&lt;/b&gt;&lt;br/&gt;Compute requests NIC without&lt;br/&gt;knowing internal VPC networking details" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#0F172A;strokeColor=#38BDF8;fontColor=#E2E8F0;" parent="1" vertex="1">
+          <mxGeometry x="480" y="175" width="400" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="&lt;b&gt;Hyperscaler Enterprise App&lt;/b&gt;&lt;br/&gt;AWS RDS PostgreSQL &amp;amp; S3 Lake&lt;br/&gt;Awaiting private replication" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#451A03;strokeColor=#D97706;fontColor=#FEF3C7;" parent="1" vertex="1">
+          <mxGeometry x="910" y="175" width="400" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="&lt;b&gt;Last-Mile Client / Edge Device&lt;/b&gt;&lt;br/&gt;datumctl connect tunnel listen&lt;br/&gt;Local service exposed to global VPC" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#064E3B;strokeColor=#059669;fontColor=#ECFDF5;" parent="1" vertex="1">
+          <mxGeometry x="1340" y="175" width="430" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="&lt;b&gt;LAYER 2: DECLARATIVE CONTROL PLANE (CRDs &amp;amp; OPERATORS)&lt;/b&gt;&lt;br/&gt;&lt;font color='#94A3B8' size='2'&gt;Automated Reconciliation across Management &amp;amp; Data Plane Clusters&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#0F172A;strokeColor=#0284C7;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="50" y="290" width="1750" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="&lt;b&gt;Connector &amp;amp; ConnectorClass&lt;/b&gt;&lt;br/&gt;Tracks client device liveness,&lt;br/&gt;ed25519 keys, capabilities (MASQUE, TCP)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#0369A1;strokeColor=#38BDF8;fontColor=#F0F9FF;" parent="1" vertex="1">
+          <mxGeometry x="70" y="345" width="330" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="&lt;b&gt;ConnectorAdvertisement&lt;/b&gt;&lt;br/&gt;Declares exported L3 subnets&lt;br/&gt;and L4 TCP/UDP target endpoints" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#0369A1;strokeColor=#38BDF8;fontColor=#F0F9FF;" parent="1" vertex="1">
+          <mxGeometry x="420" y="345" width="320" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="&lt;b&gt;ConnectorAttachment &amp;amp; VPC&lt;/b&gt;&lt;br/&gt;Binds connector cryptographic ID&lt;br/&gt;to isolated tenant VRF &amp;amp; allocates IP" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#0369A1;strokeColor=#38BDF8;fontColor=#F0F9FF;" parent="1" vertex="1">
+          <mxGeometry x="760" y="345" width="320" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="&lt;b&gt;NetworkGateway &amp;amp; NetworkRule&lt;/b&gt;&lt;br/&gt;Defines Anycast VIPs, Maglev&lt;br/&gt;backend sets, &amp;amp; DSR routing" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#0369A1;strokeColor=#38BDF8;fontColor=#F0F9FF;" parent="1" vertex="1">
+          <mxGeometry x="1100" y="345" width="330" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="&lt;b&gt;TrafficProtectionPolicy&lt;/b&gt;&lt;br/&gt;OWASP CRS Paranoia Levels,&lt;br/&gt;Rate Limiting, &amp;amp; DDoS shielding" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#0369A1;strokeColor=#38BDF8;fontColor=#F0F9FF;" parent="1" vertex="1">
+          <mxGeometry x="1450" y="345" width="320" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="&lt;b&gt;LAYER 3: DYNAMIC TUNNEL &amp;amp; CONNECTIVITY RUNTIME (Iroh + MASQUE)&lt;/b&gt;&lt;br/&gt;&lt;font color='#94A3B8' size='2'&gt;Overcoming Corporate NATs, Symmetric Firewalls, and Strict Network Boundaries&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#172554;strokeColor=#2563EB;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="50" y="480" width="1750" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="&lt;b&gt;datum-connect Agent&lt;/b&gt;&lt;br/&gt;Rust crate + Go supervisor&lt;br/&gt;Runs on hosts, containers, laptops&lt;br/&gt;STUN hole punch + QUIC streams" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E40AF;strokeColor=#60A5FA;fontColor=#EFF6FF;" parent="1" vertex="1">
+          <mxGeometry x="70" y="535" width="390" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="&lt;b&gt;Iroh Global Relay Mesh&lt;/b&gt;&lt;br/&gt;Stateless UDP relaying on port 443&lt;br/&gt;Provides 100% traversal fallback&lt;br/&gt;Site-specific routable /48 IPv6" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E40AF;strokeColor=#60A5FA;fontColor=#EFF6FF;" parent="1" vertex="1">
+          <mxGeometry x="490" y="535" width="410" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="&lt;b&gt;IETF MASQUE Protocol Suite&lt;/b&gt;&lt;br/&gt;RFC 9484 CONNECT-IP (L3 IP Tunnel)&lt;br/&gt;RFC 9298 CONNECT-UDP (Relaying)&lt;br/&gt;HTTP CONNECT-TCP (Proxying)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E40AF;strokeColor=#60A5FA;fontColor=#EFF6FF;" parent="1" vertex="1">
+          <mxGeometry x="930" y="535" width="410" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="&lt;b&gt;Dynamic IP Assignment&lt;/b&gt;&lt;br/&gt;Allocates client IP inside VPC space&lt;br/&gt;Distributes allowed routes via capsule&lt;br/&gt;HeartbeatAgent liveness renewal" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E40AF;strokeColor=#60A5FA;fontColor=#EFF6FF;" parent="1" vertex="1">
+          <mxGeometry x="1370" y="535" width="400" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="&lt;b&gt;LAYER 4: HIGH-PERFORMANCE OVERLAY DATA PLANE (KERNEL &amp;amp; eBPF)&lt;/b&gt;&lt;br/&gt;&lt;font color='#94A3B8' size='2'&gt;Deterministic Hardware-Grade Routing, Isolation, and Load Balancing in Software&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#311042;strokeColor=#A855F7;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="50" y="670" width="1750" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="&lt;b&gt;SRv6 Micro-SID (uSID) Engine&lt;/b&gt;&lt;br/&gt;TC-eBPF decap &amp;amp; encap in kernel&lt;br/&gt;Compresses routing segment lists&lt;br/&gt;Direct Pod-to-Pod cross-cluster paths" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#581C87;strokeColor=#C084FC;fontColor=#FAF5FF;" parent="1" vertex="1">
+          <mxGeometry x="70" y="725" width="400" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="&lt;b&gt;Linux Kernel VRF Sandboxing&lt;/b&gt;&lt;br/&gt;Dedicated routing tables per tenant&lt;br/&gt;Guaranteed cryptographic multi-tenancy&lt;br/&gt;No leaky cross-tenant packet leaks" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#581C87;strokeColor=#C084FC;fontColor=#FAF5FF;" parent="1" vertex="1">
+          <mxGeometry x="500" y="725" width="400" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="&lt;b&gt;Stateless Maglev DSR (XDP)&lt;/b&gt;&lt;br/&gt;Line-rate native eBPF driver hook&lt;br/&gt;Consistent hash-ring load balancing&lt;br/&gt;Direct Server Return: 0 return overhead" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#581C87;strokeColor=#C084FC;fontColor=#FAF5FF;" parent="1" vertex="1">
+          <mxGeometry x="930" y="725" width="400" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="23" value="&lt;b&gt;Sharded Stateful NAT66 Egress&lt;/b&gt;&lt;br/&gt;Masquerades private VPC packets to GUA&lt;br/&gt;Atomic linear-probe port reservation&lt;br/&gt;Direct access to public internet APIs" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#581C87;strokeColor=#C084FC;fontColor=#FAF5FF;" parent="1" vertex="1">
+          <mxGeometry x="1360" y="725" width="410" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="24" value="&lt;b&gt;LAYER 5: GLOBAL UNDERLAY FABRIC &amp;amp; PHYSICAL TRANSIT&lt;/b&gt;&lt;br/&gt;&lt;font color='#94A3B8' size='2'&gt;FRR eBGP Fabric Router • Global Anycast • Tier-1 Transits • 17+ Metros&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1C1917;strokeColor=#78716C;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="50" y="860" width="1750" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="25" value="&lt;b&gt;fabric-router (FRR eBGP)&lt;/b&gt;&lt;br/&gt;Underlay BGP peering between physical nodes&lt;br/&gt;Global IPv6 unicast reachability on loopback" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#292524;strokeColor=#A8A29E;fontColor=#F5F5F4;" parent="1" vertex="1">
+          <mxGeometry x="70" y="915" width="400" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="26" value="&lt;b&gt;BGP EVPN L3VPN Control Plane&lt;/b&gt;&lt;br/&gt;Embedded GoBGP daemon in galactic-router&lt;br/&gt;Distributes tenant EVPN routes fleet-wide" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#292524;strokeColor=#A8A29E;fontColor=#F5F5F4;" parent="1" vertex="1">
+          <mxGeometry x="500" y="915" width="400" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="27" value="&lt;b&gt;Per-Site /48 BGP Route Advertisements&lt;/b&gt;&lt;br/&gt;Site-specific IPv6 allocations to Tier-1s&lt;br/&gt;Enables globally-routable iroh-relay endpoints" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#292524;strokeColor=#A8A29E;fontColor=#F5F5F4;" parent="1" vertex="1">
+          <mxGeometry x="930" y="915" width="400" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="28" value="&lt;b&gt;Physical Colocation &amp;amp; Cloud Interconnects&lt;/b&gt;&lt;br/&gt;Equinix Ashburn, Frankfurt, San Jose, etc.&lt;br/&gt;Direct Connect / Cloud Interconnect cross-connects" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#292524;strokeColor=#A8A29E;fontColor=#F5F5F4;" parent="1" vertex="1">
+          <mxGeometry x="1360" y="915" width="410" height="85" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="diagram-3" name="3. Practical Deployment &amp; Packet Flow">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1150" background="#0F172A" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;b&gt;&lt;font size='5' color='#F8FAFC'&gt;DATUM INTERCONNECT: PRACTICAL DEPLOYMENT &amp;amp; PACKET TRACE&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font color='#94A3B8' size='3'&gt;Real-World Blueprint: CoreWeave GPU Cluster ⟷ Datum Ashburn Edge PoP ⟷ AWS us-east-1 VPC &amp;amp; Internet&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#334155;fontColor=#FFFFFF;align=center;" parent="1" vertex="1">
+          <mxGeometry x="40" y="25" width="1840" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="&lt;b&gt;SITE A: NEOCLOUD GPU CLUSTER (CoreWeave / Lambda)&lt;/b&gt;&lt;br/&gt;&lt;font color='#C4B5FD'&gt;Host: gpu-worker-node-04 • Subnet: 10.100.1.0/24 • Tenant: tenant-alpha&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#2E1065;strokeColor=#8B5CF6;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="50" y="120" width="480" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="&lt;b&gt;AI Workload Pod (vLLM Serving)&lt;/b&gt;&lt;br/&gt;IP: 10.100.1.50 • Port: 8000&lt;br/&gt;Needs private access to AWS RDS (172.31.42.10)&lt;br/&gt;Needs public access to HuggingFace models" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#3B0764;strokeColor=#A855F7;fontColor=#F3E8FF;" parent="1" vertex="1">
+          <mxGeometry x="70" y="180" width="440" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="&lt;b&gt;Linux Kernel VRF (vrf-tenant-alpha)&lt;/b&gt;&lt;br/&gt;Table: 1001 • Interface: datum0&lt;br/&gt;Default route via datum0 gateway&lt;br/&gt;Route 172.31.0.0/16 via datum-connect tunnel" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#3B0764;strokeColor=#A855F7;fontColor=#F3E8FF;" parent="1" vertex="1">
+          <mxGeometry x="70" y="280" width="440" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="&lt;b&gt;datum-connect Daemon&lt;/b&gt;&lt;br/&gt;Identity: ed25519:2ovpybgj3snjmch...&lt;br/&gt;Establishes QUIC MASQUE CONNECT-IP tunnel&lt;br/&gt;Connected to Datum Ashburn Edge Gateway" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#4C1D95;strokeColor=#C084FC;fontColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="70" y="380" width="440" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="&lt;b&gt;Host Physical Uplink (eth0)&lt;/b&gt;&lt;br/&gt;IP: 198.51.100.22 (NAT behind firewall)&lt;br/&gt;Outbound UDP 443 to Datum PoP" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#4C1D95;strokeColor=#C084FC;fontColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="70" y="480" width="440" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="&lt;b&gt;DATUM INTERCONNECT EDGE POP (Ashburn us-east-1)&lt;/b&gt;&lt;br/&gt;&lt;font color='#93C5FD'&gt;Node: edge-gw-01.ash • SRv6 Locator: fc00:datum:ashburn::/48 • BGP AS: 65001&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#0F172A;strokeColor=#0284C7;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="590" y="120" width="680" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="&lt;b&gt;Public Dynamic Tunnel Termination (MASQUE Gateway)&lt;/b&gt;&lt;br/&gt;Public Address: 2607:ed40:1000::10 / 147.75.80.1&lt;br/&gt;Terminates Iroh QUIC &amp;amp; MASQUE CONNECT-IP session&lt;br/&gt;Maps client session to Tenant Alpha VRF" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E3A8A;strokeColor=#3B82F6;fontColor=#DBEAFE;" parent="1" vertex="1">
+          <mxGeometry x="610" y="180" width="640" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="&lt;b&gt;Galactic SRv6 uSID Routing Core &amp;amp; VRF Mesh&lt;/b&gt;&lt;br/&gt;VRF 1001 (Tenant Alpha)&lt;br/&gt;• Route to 172.31.0.0/16 ➔ Encapsulate to AWS Interconnect Gateway (uSID: fc00:datum:aws::1)&lt;br/&gt;• Default Route (::/0) ➔ Forward to Stateful NAT66 Egress Gateway (egress_sid)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#312E81;strokeColor=#6366F1;fontColor=#EEF2FF;" parent="1" vertex="1">
+          <mxGeometry x="610" y="275" width="640" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="&lt;b&gt;Edge XDP Maglev DSR &amp;amp; NAT66 Tier&lt;/b&gt;&lt;br/&gt;• Ingress: Anycast VIP 2607:ed40:cafe::100 ➔ Maglev DSR to backend&lt;br/&gt;• Egress: Stateful PAT masquerading to GUA 2607:ed40:1000::masq" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#713F12;strokeColor=#FACC15;fontColor=#FEF9C3;" parent="1" vertex="1">
+          <mxGeometry x="610" y="380" width="640" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="&lt;b&gt;Private Interconnect Uplink&lt;/b&gt;&lt;br/&gt;Direct Connect / Partner Cross-Connect to AWS&lt;br/&gt;802.1Q VLAN 400 • BGP Peering" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#14532D;strokeColor=#22C55E;fontColor=#DCFCE7;" parent="1" vertex="1">
+          <mxGeometry x="610" y="480" width="310" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="&lt;b&gt;Tier-1 IP Transit Uplink&lt;/b&gt;&lt;br/&gt;Netactuate / Equinix Peering Uplink&lt;br/&gt;eBGP transit /48 advertisement" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#881337;strokeColor=#F43F5E;fontColor=#FFE4E6;" parent="1" vertex="1">
+          <mxGeometry x="940" y="480" width="310" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="&lt;b&gt;SITE B: HYPERSCALER (AWS us-east-1 VPC)&lt;/b&gt;&lt;br/&gt;&lt;font color='#FDE68A'&gt;CIDR: 172.31.0.0/16 • Account: Production&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#451A03;strokeColor=#F59E0B;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="1330" y="120" width="480" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="&lt;b&gt;AWS Direct Connect Gateway / VIF&lt;/b&gt;&lt;br/&gt;BGP ASN: 64512 • Peers with Datum Ashburn PoP&lt;br/&gt;Propagates 10.100.1.0/24 route into AWS VPC Route Table" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#78350F;strokeColor=#F59E0B;fontColor=#FEF3C7;" parent="1" vertex="1">
+          <mxGeometry x="1350" y="175" width="440" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="&lt;b&gt;Enterprise PostgreSQL DB (Amazon RDS)&lt;/b&gt;&lt;br/&gt;Private IP: 172.31.42.10 • Port: 5432&lt;br/&gt;Accepts connection directly from CoreWeave vLLM Pod" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#78350F;strokeColor=#F59E0B;fontColor=#FEF3C7;" parent="1" vertex="1">
+          <mxGeometry x="1350" y="255" width="440" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="&lt;b&gt;PUBLIC INTERNET DESTINATIONS&lt;/b&gt;&lt;br/&gt;&lt;font color='#FECDD3'&gt;Global Web &amp;amp; Public AI Services&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#4C0519;strokeColor=#F43F5E;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="1330" y="370" width="480" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="&lt;b&gt;HuggingFace / Model Hub / GitHub&lt;/b&gt;&lt;br/&gt;Destination IPv6: 2600:9000:20::1 • Port 443&lt;br/&gt;Sees traffic originating from Datum Masquerade GUA" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#881337;strokeColor=#FB7185;fontColor=#FFF1F2;" parent="1" vertex="1">
+          <mxGeometry x="1350" y="425" width="440" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="&lt;b&gt;External Client / Web Browser / Mobile App&lt;/b&gt;&lt;br/&gt;Sends query to Datum Anycast VIP (2607:ed40:cafe::100)&lt;br/&gt;Replies received directly via DSR from CoreWeave!" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#881337;strokeColor=#FB7185;fontColor=#FFE4E6;" parent="1" vertex="1">
+          <mxGeometry x="1350" y="505" width="440" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="&lt;b&gt;STEP-BY-STEP PACKET TRACES ACROSS DATUM INTERCONNECT&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#090D16;strokeColor=#38BDF8;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="50" y="640" width="1760" height="460" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="&lt;b&gt;FLOW 1: PRIVATE CROSS-CLOUD TRANSIT (Neocloud GPU ➔ AWS Private RDS)&lt;/b&gt;&lt;br/&gt;1. &lt;b&gt;Application Origin:&lt;/b&gt; PyTorch Pod on CoreWeave initiates TCP connect to &lt;code&gt;172.31.42.10:5432&lt;/code&gt; (AWS RDS).&lt;br/&gt;2. &lt;b&gt;Kernel VRF Routing:&lt;/b&gt; Routing table 1001 directs traffic into &lt;code&gt;datum0&lt;/code&gt; dynamic tunnel interface.&lt;br/&gt;3. &lt;b&gt;MASQUE / QUIC Tunnel:&lt;/b&gt; &lt;code&gt;datum-connect&lt;/code&gt; wraps IP packet into RFC 9484 CONNECT-IP capsule over QUIC to Datum Ashburn.&lt;br/&gt;4. &lt;b&gt;SRv6 Micro-SID Encapsulation:&lt;/b&gt; Ashburn Gateway translates MASQUE capsule into SRv6 uSID packet: &lt;code&gt;[IPv6: fc00:ash:: ➔ fc00:aws:: | Inner IP: 10.100.1.50 ➔ 172.31.42.10]&lt;/code&gt;.&lt;br/&gt;5. &lt;b&gt;Backbone Transit &amp;amp; Decapsulation:&lt;/b&gt; Packet crosses Datum private optical transit; decapsulated at AWS Direct Connect Gateway.&lt;br/&gt;6. &lt;b&gt;Arrival:&lt;/b&gt; RDS Postgres receives clean, private packet from &lt;code&gt;10.100.1.50&lt;/code&gt; with zero public IP exposure or NAT rewriting!" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#3B82F6;fontColor=#E2E8F0;align=left;" parent="1" vertex="1">
+          <mxGeometry x="70" y="690" width="840" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="&lt;b&gt;FLOW 2: PUBLIC INTERNET EGRESS WITH STATEFUL NAT66 (Neocloud GPU ➔ Internet API)&lt;/b&gt;&lt;br/&gt;1. &lt;b&gt;Application Origin:&lt;/b&gt; GPU worker requests model weights from HuggingFace (&lt;code&gt;2600:9000:20::1:443&lt;/code&gt;).&lt;br/&gt;2. &lt;b&gt;Default Route Match:&lt;/b&gt; VRF default route forwards packet across dynamic tunnel to Datum Edge Gateway with &lt;code&gt;egress_sid&lt;/code&gt;.&lt;br/&gt;3. &lt;b&gt;Stateful NAT66 Masquerade:&lt;/b&gt; &lt;code&gt;galactic-nat66&lt;/code&gt; allocates port in LRU connection table; translates private source to &lt;code&gt;2607:ed40:1000::masq:42188&lt;/code&gt;.&lt;br/&gt;4. &lt;b&gt;Internet Transit:&lt;/b&gt; Gateway forwards packet to Netactuate Tier-1 upstream.&lt;br/&gt;5. &lt;b&gt;Return Path:&lt;/b&gt; HuggingFace replies to &lt;code&gt;2607:ed40:1000::masq:42188&lt;/code&gt;. Edge gateway looks up LRU table, DNATs back to pod address, pushes SRv6 return header, and forwards across dynamic tunnel back to CoreWeave!" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#EAB308;fontColor=#E2E8F0;align=left;" parent="1" vertex="1">
+          <mxGeometry x="940" y="690" width="850" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="23" value="&lt;b&gt;FLOW 3: HIGH-PERFORMANCE INGRESS VIA STATELESS MAGLEV DSR (External User ➔ Neocloud API)&lt;/b&gt;&lt;br/&gt;1. &lt;b&gt;Client Ingress:&lt;/b&gt; External client sends HTTP request to Anycast VIP &lt;code&gt;2607:ed40:cafe::100:443&lt;/code&gt;.&lt;br/&gt;2. &lt;b&gt;Stateless Consistent Hashing:&lt;/b&gt; &lt;code&gt;galactic-gateway&lt;/code&gt; native XDP hook hashes 5-tuple into Maglev lookup table, picking CoreWeave backend &lt;code&gt;10.100.1.50&lt;/code&gt;.&lt;br/&gt;3. &lt;b&gt;SRv6 Encap (No NAT):&lt;/b&gt; Gateway pushes outer SRv6 header addressed to worker's uSID. &lt;b&gt;Packet payload and original client IP are NOT rewritten&lt;/b&gt;.&lt;br/&gt;4. &lt;b&gt;Direct Server Return (DSR):&lt;/b&gt; Worker receives packet, processes request, and &lt;b&gt;transmits response DIRECTLY to client IP&lt;/b&gt; via Datum egress transit, completely bypassing the gateway on the return path! Eliminates gateway return bandwidth saturation." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#10B981;fontColor=#E2E8F0;align=left;" parent="1" vertex="1">
+          <mxGeometry x="70" y="890" width="1720" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="24" value="Dynamic QUIC / MASQUE&lt;br/&gt;(Private + Public Transit)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#A855F7;strokeWidth=3;fontColor=#E2E8F0;fontSize=11;" parent="1" edge="1" source="7" target="8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="25" value="Direct Connect / 802.1Q&lt;br/&gt;Private VPC Routes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#F59E0B;strokeWidth=3;fontColor=#E2E8F0;fontSize=11;" parent="1" edge="1" source="12" target="15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="26" value="Tier-1 IP Transit&lt;br/&gt;BGP Per-Site /48" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#F43F5E;strokeWidth=3;fontColor=#E2E8F0;fontSize=11;" parent="1" edge="1" source="13" target="18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="diagram-4" name="4. Dynamic Tunnel &amp; Agent Lifecycle">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1850" pageHeight="1100" background="#0F172A" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;b&gt;&lt;font size='5' color='#F8FAFC'&gt;DATUM CONNECT: DYNAMIC TUNNEL ARCHITECTURE &amp;amp; AGENT LIFECYCLE&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font color='#94A3B8' size='3'&gt;How Iroh P2P NAT Traversal, Cryptographic Identity, and MASQUE CONNECT-IP Operate in Practice&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#334155;fontColor=#FFFFFF;align=center;" parent="1" vertex="1">
+          <mxGeometry x="40" y="30" width="1770" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="&lt;b&gt;PHASE 1: INITIALIZATION &amp;amp; SUPERVISOR&lt;/b&gt;&lt;br/&gt;&lt;font color='#93C5FD'&gt;Two-Binary Architecture • State Isolation&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#0F172A;strokeColor=#3B82F6;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="50" y="130" width="390" height="850" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="&lt;b&gt;1. datumctl Invocation&lt;/b&gt;&lt;br/&gt;User or systemd executes:&lt;br/&gt;&lt;code&gt;datumctl connect tunnel run ...&lt;/code&gt;&lt;br/&gt;Go supervisor initializes." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#60A5FA;fontColor=#DBEAFE;" parent="1" vertex="1">
+          <mxGeometry x="70" y="190" width="350" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="&lt;b&gt;2. Subprocess Management&lt;/b&gt;&lt;br/&gt;Go supervisor spawns headless&lt;br/&gt;Rust binary &lt;code&gt;datum-connect&lt;/code&gt;.&lt;br/&gt;• Stderr ➔ Human status lines&lt;br/&gt;• Stdout ➔ JSON lifecycle events" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#60A5FA;fontColor=#DBEAFE;" parent="1" vertex="1">
+          <mxGeometry x="70" y="290" width="350" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="&lt;b&gt;3. Cryptographic Identity&lt;/b&gt;&lt;br/&gt;Generates/loads persistent Ed25519&lt;br/&gt;keypair in &lt;code&gt;~/.local/share/datumctl/&lt;/code&gt;.&lt;br/&gt;Public key (NodeId) serves as global cryptographic identity." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#60A5FA;fontColor=#DBEAFE;" parent="1" vertex="1">
+          <mxGeometry x="70" y="410" width="350" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="&lt;b&gt;4. Credential Resolution&lt;/b&gt;&lt;br/&gt;Executes credential helper via&lt;br/&gt;&lt;code&gt;DATUM_CREDENTIALS_HELPER&lt;/code&gt;.&lt;br/&gt;Acquires scoped OAuth token for&lt;br/&gt;Datum Cloud API authentication." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#60A5FA;fontColor=#DBEAFE;" parent="1" vertex="1">
+          <mxGeometry x="70" y="530" width="350" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="&lt;b&gt;5. Project Control Plane Bind&lt;/b&gt;&lt;br/&gt;Connects to Kubernetes API server.&lt;br/&gt;Reconciles &lt;code&gt;Connector&lt;/code&gt; custom resource with &lt;code&gt;PublicKey&lt;/code&gt; connection details." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#60A5FA;fontColor=#DBEAFE;" parent="1" vertex="1">
+          <mxGeometry x="70" y="645" width="350" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="&lt;b&gt;Key Benefit: Crash Isolation&lt;/b&gt;&lt;br/&gt;Supervisor restarts Rust binary on panic; isolates user credentials from child memory." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#0F2942;strokeColor=#38BDF8;fontColor=#E0F2FE;" parent="1" vertex="1">
+          <mxGeometry x="70" y="760" width="350" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="&lt;b&gt;PHASE 2: NAT TRAVERSAL &amp;amp; HOLE PUNCHING&lt;/b&gt;&lt;br/&gt;&lt;font color='#A7F3D0'&gt;Iroh P2P Engine • STUN / DERP • Zero Inbound Ports&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#064E3B;strokeColor=#10B981;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="470" y="130" width="410" height="850" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="&lt;b&gt;1. Discover Local &amp;amp; WAN Endpoints&lt;/b&gt;&lt;br/&gt;Agent probes local interfaces and contacts Home Relay via STUN.&lt;br/&gt;Learns public IP, mapped port, and NAT type (Cone vs Symmetric)." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#065F46;strokeColor=#34D399;fontColor=#ECFDF5;" parent="1" vertex="1">
+          <mxGeometry x="490" y="190" width="370" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="&lt;b&gt;2. Home Relay Registration&lt;/b&gt;&lt;br/&gt;Publishes reachable DERP endpoint to&lt;br/&gt;Datum Home Relay (e.g. &lt;code&gt;relay.ash.datum.net&lt;/code&gt;).&lt;br/&gt;Relay publishes /48 BGP prefix." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#065F46;strokeColor=#34D399;fontColor=#ECFDF5;" parent="1" vertex="1">
+          <mxGeometry x="490" y="305" width="370" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="&lt;b&gt;3. Simultaneous UDP Hole Punch&lt;/b&gt;&lt;br/&gt;Both endpoints exchange candidates out-of-band via relay.&lt;br/&gt;Simultaneously send UDP packets to punch holes in stateful firewalls." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#065F46;strokeColor=#34D399;fontColor=#ECFDF5;" parent="1" vertex="1">
+          <mxGeometry x="490" y="420" width="370" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="&lt;b&gt;4. Path Decision Matrix&lt;/b&gt;&lt;br/&gt;• &lt;b&gt;Direct P2P:&lt;/b&gt; If hole-punch succeeds, upgrade immediately to 0-RTT direct QUIC.&lt;br/&gt;• &lt;b&gt;Relay Fallback:&lt;/b&gt; If symmetric enterprise NAT blocks UDP, tunnel smoothly through Datum Relay over port 443." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#065F46;strokeColor=#34D399;fontColor=#ECFDF5;" parent="1" vertex="1">
+          <mxGeometry x="490" y="535" width="370" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="&lt;b&gt;5. Encrypted QUIC Handshake&lt;/b&gt;&lt;br/&gt;TLS 1.3 handshake authenticated by&lt;br/&gt;Ed25519 node keys. Perfect forward secrecy, immune to IP spoofing." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#065F46;strokeColor=#34D399;fontColor=#ECFDF5;" parent="1" vertex="1">
+          <mxGeometry x="490" y="675" width="370" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="&lt;b&gt;Zero Firewall Changes Needed&lt;/b&gt;&lt;br/&gt;Works through hotel Wi-Fi, strict enterprise NAT, and cellular without open ports." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#022C22;strokeColor=#10B981;fontColor=#D1FAE5;" parent="1" vertex="1">
+          <mxGeometry x="490" y="785" width="370" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="&lt;b&gt;PHASE 3: MASQUE PROTOCOL NEGOTIATION&lt;/b&gt;&lt;br/&gt;&lt;font color='#FED7AA'&gt;RFC 9484 CONNECT-IP • L3 Encapsulation&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#451A03;strokeColor=#F59E0B;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="910" y="130" width="410" height="850" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="&lt;b&gt;1. HTTP/3 CONNECT-IP Request&lt;/b&gt;&lt;br/&gt;Agent opens bidirectional QUIC stream and issues standard HTTP/3 extended CONNECT request for &lt;code&gt;masque://datum-gateway&lt;/code&gt;." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#78350F;strokeColor=#FBBF24;fontColor=#FEF3C7;" parent="1" vertex="1">
+          <mxGeometry x="930" y="190" width="370" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="&lt;b&gt;2. Capability Negotiation&lt;/b&gt;&lt;br/&gt;Gateway checks &lt;code&gt;Connector.spec.capabilities&lt;/code&gt;:&lt;br/&gt;• MASQUE (RFC 9484)&lt;br/&gt;• CONNECT-IP (L3 IP packets)&lt;br/&gt;• CONNECT-TCP (HTTP proxying)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#78350F;strokeColor=#FBBF24;fontColor=#FEF3C7;" parent="1" vertex="1">
+          <mxGeometry x="930" y="305" width="370" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="&lt;b&gt;3. Address &amp;amp; Route Assignment&lt;/b&gt;&lt;br/&gt;Gateway responds with 200 OK + Capsule Frames:&lt;br/&gt;• &lt;code&gt;ADDRESS_ASSIGN&lt;/code&gt;: 10.100.1.50/24&lt;br/&gt;• &lt;code&gt;ROUTE_ADVERTISEMENT&lt;/code&gt;: 172.31.0.0/16, ::/0" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#78350F;strokeColor=#FBBF24;fontColor=#FEF3C7;" parent="1" vertex="1">
+          <mxGeometry x="930" y="420" width="370" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="&lt;b&gt;4. Kernel Device Provisioning&lt;/b&gt;&lt;br/&gt;Agent creates virtual TUN interface (&lt;code&gt;datum0&lt;/code&gt;); binds to kernel VRF.&lt;br/&gt;Routes for target VPC subnets programmed into local routing table." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#78350F;strokeColor=#FBBF24;fontColor=#FEF3C7;" parent="1" vertex="1">
+          <mxGeometry x="930" y="540" width="370" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="&lt;b&gt;5. Capsule Frame Forwarding&lt;/b&gt;&lt;br/&gt;Raw IP packets routed to &lt;code&gt;datum0&lt;/code&gt; are encapsulated inside MASQUE IP capsules over QUIC datagrams." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#78350F;strokeColor=#FBBF24;fontColor=#FEF3C7;" parent="1" vertex="1">
+          <mxGeometry x="930" y="655" width="370" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="23" value="&lt;b&gt;IETF Standard Compliant&lt;/b&gt;&lt;br/&gt;Standard RFC 9484 wire format. Allows future browser WebTransport clients without proprietary clients." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#291500;strokeColor=#F59E0B;fontColor=#FEF3C7;" parent="1" vertex="1">
+          <mxGeometry x="930" y="765" width="370" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="24" value="&lt;b&gt;PHASE 4: LIVENESS &amp;amp; SELF-HEALING&lt;/b&gt;&lt;br/&gt;&lt;font color='#DDD6FE'&gt;Kube Lease Renewal • Seamless Migration&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#2E1065;strokeColor=#8B5CF6;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="1350" y="130" width="450" height="850" as="geometry" />
+        </mxCell>
+        <mxCell id="25" value="&lt;b&gt;1. HeartbeatAgent &amp;amp; LeaseRef&lt;/b&gt;&lt;br/&gt;Rust agent runs async heartbeat task. Periodically updates &lt;code&gt;coordination.k8s.io/v1 Lease&lt;/code&gt; referenced in &lt;code&gt;Connector.status.leaseRef&lt;/code&gt;.&lt;br/&gt;Guarantees operator knows agent is healthy." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#3B0764;strokeColor=#A855F7;fontColor=#F3E8FF;" parent="1" vertex="1">
+          <mxGeometry x="1370" y="190" width="410" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="26" value="&lt;b&gt;2. Failure Detection &amp;amp; Drop Prevention&lt;/b&gt;&lt;br/&gt;If agent process dies or loses network, Lease expires after 30s.&lt;br/&gt;Controller sets &lt;code&gt;Connector.status.Ready = False&lt;/code&gt;.&lt;br/&gt;Galactic routes smoothly re-converge to standby gateways." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#3B0764;strokeColor=#A855F7;fontColor=#F3E8FF;" parent="1" vertex="1">
+          <mxGeometry x="1370" y="310" width="410" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="27" value="&lt;b&gt;3. QUIC Connection Migration&lt;/b&gt;&lt;br/&gt;If physical IP changes (e.g. Wi-Fi ➔ Cellular, or laptop sleep/wake), QUIC connection ID persists!&lt;br/&gt;&lt;b&gt;Active TCP connections over MASQUE tunnel DO NOT DROP.&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#3B0764;strokeColor=#A855F7;fontColor=#F3E8FF;" parent="1" vertex="1">
+          <mxGeometry x="1370" y="435" width="410" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="28" value="&lt;b&gt;4. Auto-Reconnection &amp;amp; Retry&lt;/b&gt;&lt;br/&gt;If link drops entirely, agent executes exponential backoff.&lt;br/&gt;Re-probes STUN and relays.&lt;br/&gt;Transparently resumes session within milliseconds." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#3B0764;strokeColor=#A855F7;fontColor=#F3E8FF;" parent="1" vertex="1">
+          <mxGeometry x="1370" y="560" width="410" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="29" value="&lt;b&gt;5. Clean Teardown &amp;amp; GC&lt;/b&gt;&lt;br/&gt;On SIGTERM/Ctrl+C, supervisor notifies Rust child.&lt;br/&gt;Removes TUN interface, clears routes, and cleans up CRD status cleanly." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#3B0764;strokeColor=#A855F7;fontColor=#F3E8FF;" parent="1" vertex="1">
+          <mxGeometry x="1370" y="675" width="410" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="30" value="&lt;b&gt;Zero-Downtime Resilience&lt;/b&gt;&lt;br/&gt;Hardened against packet loss, route flaps, and dynamic interface switches." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#19053B;strokeColor=#C084FC;fontColor=#EDE9FE;" parent="1" vertex="1">
+          <mxGeometry x="1370" y="785" width="410" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="31" value="Child Spawned &amp;amp; Identity Ready" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#38BDF8;strokeWidth=2;fontColor=#E2E8F0;fontSize=11;" parent="1" edge="1" source="3" target="10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="32" value="P2P or Relay Path Established" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#10B981;strokeWidth=2;fontColor=#E2E8F0;fontSize=11;" parent="1" edge="1" source="10" target="17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="33" value="L3 Tunnel Active &amp;amp; Interfaces Up" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#F59E0B;strokeWidth=2;fontColor=#E2E8F0;fontSize=11;" parent="1" edge="1" source="17" target="24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
