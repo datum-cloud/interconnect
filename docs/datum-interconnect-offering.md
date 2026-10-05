@@ -116,12 +116,12 @@ Just as **Plaid** moved banking interactions from batch ACH files and proprietar
 
 The complete visual specification for Datum Interconnect is stored directly within this repository as an interactive, multi-page Draw.io document:
 
-- **Primary Multi-Page File**: [`docs/datum-interconnect-architecture.drawio`](./docs/datum-interconnect-architecture.drawio)
+- **Primary Multi-Page File**: [`datum-interconnect-architecture.drawio`](./datum-interconnect-architecture.drawio)
 - **Individual Diagram Exports**:
-  - Page 1: [`docs/diagrams/1-ecosystem-virtual-meet-me-room.drawio`](./docs/diagrams/1-ecosystem-virtual-meet-me-room.drawio)
-  - Page 2: [`docs/diagrams/2-control-and-data-plane-stack.drawio`](./docs/diagrams/2-control-and-data-plane-stack.drawio)
-  - Page 3: [`docs/diagrams/3-practical-deployment-and-packet-flow.drawio`](./docs/diagrams/3-practical-deployment-and-packet-flow.drawio)
-  - Page 4: [`docs/diagrams/4-dynamic-tunnel-and-agent-lifecycle.drawio`](./docs/diagrams/4-dynamic-tunnel-and-agent-lifecycle.drawio)
+  - Page 1: [`diagrams/1-ecosystem-virtual-meet-me-room.drawio`](./diagrams/1-ecosystem-virtual-meet-me-room.drawio)
+  - Page 2: [`diagrams/2-control-and-data-plane-stack.drawio`](./diagrams/2-control-and-data-plane-stack.drawio)
+  - Page 3: [`diagrams/3-practical-deployment-and-packet-flow.drawio`](./diagrams/3-practical-deployment-and-packet-flow.drawio)
+  - Page 4: [`diagrams/4-dynamic-tunnel-and-agent-lifecycle.drawio`](./diagrams/4-dynamic-tunnel-and-agent-lifecycle.drawio)
 
 > [!TIP]
 > **How to Open and Edit:**
@@ -794,7 +794,7 @@ For public-facing ingress endpoints, Datum integrates Envoy Gateway with OWASP C
 Datum Interconnect redefines cloud networking by replacing physical patch panels and vendor-locked circuits with a high-performance, cryptographic software fabric. Whether interconnecting multi-thousand GPU clusters across Neoclouds, federating enterprise datasets from Hyperscalers, or streaming real-time edge telemetry from the Last Mile, Datum provides a unified, programmable home for modern distributed systems.
 
 ### Related Documentation & Code References
-- **Multi-Page Architecture Diagram**: [`docs/datum-interconnect-architecture.drawio`](./docs/datum-interconnect-architecture.drawio)
+- **Multi-Page Architecture Diagram**: [`datum-interconnect-architecture.drawio`](./datum-interconnect-architecture.drawio)
 - **Datum Connect Daemon Source**: [`datum-connect-daemon/connect/`](https://github.com/datum-cloud/datum-connect-daemon)
 - **Galactic SRv6 & Gateway Data Plane**: [`galactic/`](https://github.com/datum-cloud/galactic)
 - **Network Services Operator CRDs**: [`network-services-operator/`](https://github.com/datum-cloud/network-services-operator)
