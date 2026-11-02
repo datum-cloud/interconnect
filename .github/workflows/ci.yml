@@ -21,7 +21,8 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version-file: ui/consumer/.nvmrc
-      - uses: oven-sh/setup-bun@v2
-      - run: bun install --frozen-lockfile
-      - run: bun run typecheck
-      - run: bun run build
+          cache: npm
+          cache-dependency-path: ui/consumer/package-lock.json
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npm run typecheck
+      - run: npm run build
