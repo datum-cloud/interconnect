@@ -18,9 +18,9 @@ rest of this repo:
 
 ```bash
 cd ui/consumer
-bun install
-bun run dev        # Vite dev server (:7779, HMR) — standalone/direct
-bun run preview    # built dist/ served (:7779) — proxy-safe
-bun run build      # static dist/ (remoteEntry.js + plugin-manifest.json + chunks)
-bun run typecheck  # tsc --noEmit
+npm install
+npm run dev        # Vite dev server (:7779, HMR) — standalone/direct
+npm run preview    # built dist/ served (:7779) — proxy-safe
+npm run build      # static dist/ (remoteEntry.js + plugin-manifest.json + chunks)
+npm run typecheck  # tsc --noEmit
 ```
