@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" modified="2026-09-03T20:30:00.000Z" agent="Datum Architecture Engine" version="24.0.0" type="device">
+  <diagram id="diagram-page" name="3. Practical Deployment &amp; Packet Flow">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1150" background="#0F172A" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;b&gt;&lt;font size='5' color='#F8FAFC'&gt;DATUM INTERCONNECT: PRACTICAL DEPLOYMENT &amp;amp; PACKET TRACE&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font color='#94A3B8' size='3'&gt;Real-World Blueprint: CoreWeave GPU Cluster ⟷ Datum Ashburn Edge PoP ⟷ AWS us-east-1 VPC &amp;amp; Internet&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#334155;fontColor=#FFFFFF;align=center;" parent="1" vertex="1">
+          <mxGeometry x="40" y="25" width="1840" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="&lt;b&gt;SITE A: NEOCLOUD GPU CLUSTER (CoreWeave / Lambda)&lt;/b&gt;&lt;br/&gt;&lt;font color='#C4B5FD'&gt;Host: gpu-worker-node-04 • Subnet: 10.100.1.0/24 • Tenant: tenant-alpha&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#2E1065;strokeColor=#8B5CF6;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="50" y="120" width="480" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="&lt;b&gt;AI Workload Pod (vLLM Serving)&lt;/b&gt;&lt;br/&gt;IP: 10.100.1.50 • Port: 8000&lt;br/&gt;Needs private access to AWS RDS (172.31.42.10)&lt;br/&gt;Needs public access to HuggingFace models" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#3B0764;strokeColor=#A855F7;fontColor=#F3E8FF;" parent="1" vertex="1">
+          <mxGeometry x="70" y="180" width="440" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="&lt;b&gt;Linux Kernel VRF (vrf-tenant-alpha)&lt;/b&gt;&lt;br/&gt;Table: 1001 • Interface: datum0&lt;br/&gt;Default route via datum0 gateway&lt;br/&gt;Route 172.31.0.0/16 via datum-connect tunnel" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#3B0764;strokeColor=#A855F7;fontColor=#F3E8FF;" parent="1" vertex="1">
+          <mxGeometry x="70" y="280" width="440" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="&lt;b&gt;datum-connect Daemon&lt;/b&gt;&lt;br/&gt;Identity: ed25519:2ovpybgj3snjmch...&lt;br/&gt;Establishes QUIC MASQUE CONNECT-IP tunnel&lt;br/&gt;Connected to Datum Ashburn Edge Gateway" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#4C1D95;strokeColor=#C084FC;fontColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="70" y="380" width="440" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="&lt;b&gt;Host Physical Uplink (eth0)&lt;/b&gt;&lt;br/&gt;IP: 198.51.100.22 (NAT behind firewall)&lt;br/&gt;Outbound UDP 443 to Datum PoP" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#4C1D95;strokeColor=#C084FC;fontColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="70" y="480" width="440" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="&lt;b&gt;DATUM INTERCONNECT EDGE POP (Ashburn us-east-1)&lt;/b&gt;&lt;br/&gt;&lt;font color='#93C5FD'&gt;Node: edge-gw-01.ash • SRv6 Locator: fc00:datum:ashburn::/48 • BGP AS: 65001&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#0F172A;strokeColor=#0284C7;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="590" y="120" width="680" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="&lt;b&gt;Public Dynamic Tunnel Termination (MASQUE Gateway)&lt;/b&gt;&lt;br/&gt;Public Address: 2607:ed40:1000::10 / 147.75.80.1&lt;br/&gt;Terminates Iroh QUIC &amp;amp; MASQUE CONNECT-IP session&lt;br/&gt;Maps client session to Tenant Alpha VRF" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E3A8A;strokeColor=#3B82F6;fontColor=#DBEAFE;" parent="1" vertex="1">
+          <mxGeometry x="610" y="180" width="640" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="&lt;b&gt;Galactic SRv6 uSID Routing Core &amp;amp; VRF Mesh&lt;/b&gt;&lt;br/&gt;VRF 1001 (Tenant Alpha)&lt;br/&gt;• Route to 172.31.0.0/16 ➔ Encapsulate to AWS Interconnect Gateway (uSID: fc00:datum:aws::1)&lt;br/&gt;• Default Route (::/0) ➔ Forward to Stateful NAT66 Egress Gateway (egress_sid)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#312E81;strokeColor=#6366F1;fontColor=#EEF2FF;" parent="1" vertex="1">
+          <mxGeometry x="610" y="275" width="640" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="&lt;b&gt;Edge XDP Maglev DSR &amp;amp; NAT66 Tier&lt;/b&gt;&lt;br/&gt;• Ingress: Anycast VIP 2607:ed40:cafe::100 ➔ Maglev DSR to backend&lt;br/&gt;• Egress: Stateful PAT masquerading to GUA 2607:ed40:1000::masq" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#713F12;strokeColor=#FACC15;fontColor=#FEF9C3;" parent="1" vertex="1">
+          <mxGeometry x="610" y="380" width="640" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="&lt;b&gt;Private Interconnect Uplink&lt;/b&gt;&lt;br/&gt;Direct Connect / Partner Cross-Connect to AWS&lt;br/&gt;802.1Q VLAN 400 • BGP Peering" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#14532D;strokeColor=#22C55E;fontColor=#DCFCE7;" parent="1" vertex="1">
+          <mxGeometry x="610" y="480" width="310" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="&lt;b&gt;Tier-1 IP Transit Uplink&lt;/b&gt;&lt;br/&gt;Netactuate / Equinix Peering Uplink&lt;br/&gt;eBGP transit /48 advertisement" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#881337;strokeColor=#F43F5E;fontColor=#FFE4E6;" parent="1" vertex="1">
+          <mxGeometry x="940" y="480" width="310" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="&lt;b&gt;SITE B: HYPERSCALER (AWS us-east-1 VPC)&lt;/b&gt;&lt;br/&gt;&lt;font color='#FDE68A'&gt;CIDR: 172.31.0.0/16 • Account: Production&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#451A03;strokeColor=#F59E0B;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="1330" y="120" width="480" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="&lt;b&gt;AWS Direct Connect Gateway / VIF&lt;/b&gt;&lt;br/&gt;BGP ASN: 64512 • Peers with Datum Ashburn PoP&lt;br/&gt;Propagates 10.100.1.0/24 route into AWS VPC Route Table" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#78350F;strokeColor=#F59E0B;fontColor=#FEF3C7;" parent="1" vertex="1">
+          <mxGeometry x="1350" y="175" width="440" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="&lt;b&gt;Enterprise PostgreSQL DB (Amazon RDS)&lt;/b&gt;&lt;br/&gt;Private IP: 172.31.42.10 • Port: 5432&lt;br/&gt;Accepts connection directly from CoreWeave vLLM Pod" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#78350F;strokeColor=#F59E0B;fontColor=#FEF3C7;" parent="1" vertex="1">
+          <mxGeometry x="1350" y="255" width="440" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="&lt;b&gt;PUBLIC INTERNET DESTINATIONS&lt;/b&gt;&lt;br/&gt;&lt;font color='#FECDD3'&gt;Global Web &amp;amp; Public AI Services&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#4C0519;strokeColor=#F43F5E;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="1330" y="370" width="480" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="&lt;b&gt;HuggingFace / Model Hub / GitHub&lt;/b&gt;&lt;br/&gt;Destination IPv6: 2600:9000:20::1 • Port 443&lt;br/&gt;Sees traffic originating from Datum Masquerade GUA" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#881337;strokeColor=#FB7185;fontColor=#FFF1F2;" parent="1" vertex="1">
+          <mxGeometry x="1350" y="425" width="440" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="&lt;b&gt;External Client / Web Browser / Mobile App&lt;/b&gt;&lt;br/&gt;Sends query to Datum Anycast VIP (2607:ed40:cafe::100)&lt;br/&gt;Replies received directly via DSR from CoreWeave!" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#881337;strokeColor=#FB7185;fontColor=#FFE4E6;" parent="1" vertex="1">
+          <mxGeometry x="1350" y="505" width="440" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="&lt;b&gt;STEP-BY-STEP PACKET TRACES ACROSS DATUM INTERCONNECT&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#090D16;strokeColor=#38BDF8;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="50" y="640" width="1760" height="460" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="&lt;b&gt;FLOW 1: PRIVATE CROSS-CLOUD TRANSIT (Neocloud GPU ➔ AWS Private RDS)&lt;/b&gt;&lt;br/&gt;1. &lt;b&gt;Application Origin:&lt;/b&gt; PyTorch Pod on CoreWeave initiates TCP connect to &lt;code&gt;172.31.42.10:5432&lt;/code&gt; (AWS RDS).&lt;br/&gt;2. &lt;b&gt;Kernel VRF Routing:&lt;/b&gt; Routing table 1001 directs traffic into &lt;code&gt;datum0&lt;/code&gt; dynamic tunnel interface.&lt;br/&gt;3. &lt;b&gt;MASQUE / QUIC Tunnel:&lt;/b&gt; &lt;code&gt;datum-connect&lt;/code&gt; wraps IP packet into RFC 9484 CONNECT-IP capsule over QUIC to Datum Ashburn.&lt;br/&gt;4. &lt;b&gt;SRv6 Micro-SID Encapsulation:&lt;/b&gt; Ashburn Gateway translates MASQUE capsule into SRv6 uSID packet: &lt;code&gt;[IPv6: fc00:ash:: ➔ fc00:aws:: | Inner IP: 10.100.1.50 ➔ 172.31.42.10]&lt;/code&gt;.&lt;br/&gt;5. &lt;b&gt;Backbone Transit &amp;amp; Decapsulation:&lt;/b&gt; Packet crosses Datum private optical transit; decapsulated at AWS Direct Connect Gateway.&lt;br/&gt;6. &lt;b&gt;Arrival:&lt;/b&gt; RDS Postgres receives clean, private packet from &lt;code&gt;10.100.1.50&lt;/code&gt; with zero public IP exposure or NAT rewriting!" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#3B82F6;fontColor=#E2E8F0;align=left;" parent="1" vertex="1">
+          <mxGeometry x="70" y="690" width="840" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="&lt;b&gt;FLOW 2: PUBLIC INTERNET EGRESS WITH STATEFUL NAT66 (Neocloud GPU ➔ Internet API)&lt;/b&gt;&lt;br/&gt;1. &lt;b&gt;Application Origin:&lt;/b&gt; GPU worker requests model weights from HuggingFace (&lt;code&gt;2600:9000:20::1:443&lt;/code&gt;).&lt;br/&gt;2. &lt;b&gt;Default Route Match:&lt;/b&gt; VRF default route forwards packet across dynamic tunnel to Datum Edge Gateway with &lt;code&gt;egress_sid&lt;/code&gt;.&lt;br/&gt;3. &lt;b&gt;Stateful NAT66 Masquerade:&lt;/b&gt; &lt;code&gt;galactic-nat66&lt;/code&gt; allocates port in LRU connection table; translates private source to &lt;code&gt;2607:ed40:1000::masq:42188&lt;/code&gt;.&lt;br/&gt;4. &lt;b&gt;Internet Transit:&lt;/b&gt; Gateway forwards packet to Netactuate Tier-1 upstream.&lt;br/&gt;5. &lt;b&gt;Return Path:&lt;/b&gt; HuggingFace replies to &lt;code&gt;2607:ed40:1000::masq:42188&lt;/code&gt;. Edge gateway looks up LRU table, DNATs back to pod address, pushes SRv6 return header, and forwards across dynamic tunnel back to CoreWeave!" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#EAB308;fontColor=#E2E8F0;align=left;" parent="1" vertex="1">
+          <mxGeometry x="940" y="690" width="850" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="23" value="&lt;b&gt;FLOW 3: HIGH-PERFORMANCE INGRESS VIA STATELESS MAGLEV DSR (External User ➔ Neocloud API)&lt;/b&gt;&lt;br/&gt;1. &lt;b&gt;Client Ingress:&lt;/b&gt; External client sends HTTP request to Anycast VIP &lt;code&gt;2607:ed40:cafe::100:443&lt;/code&gt;.&lt;br/&gt;2. &lt;b&gt;Stateless Consistent Hashing:&lt;/b&gt; &lt;code&gt;galactic-gateway&lt;/code&gt; native XDP hook hashes 5-tuple into Maglev lookup table, picking CoreWeave backend &lt;code&gt;10.100.1.50&lt;/code&gt;.&lt;br/&gt;3. &lt;b&gt;SRv6 Encap (No NAT):&lt;/b&gt; Gateway pushes outer SRv6 header addressed to worker's uSID. &lt;b&gt;Packet payload and original client IP are NOT rewritten&lt;/b&gt;.&lt;br/&gt;4. &lt;b&gt;Direct Server Return (DSR):&lt;/b&gt; Worker receives packet, processes request, and &lt;b&gt;transmits response DIRECTLY to client IP&lt;/b&gt; via Datum egress transit, completely bypassing the gateway on the return path! Eliminates gateway return bandwidth saturation." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#10B981;fontColor=#E2E8F0;align=left;" parent="1" vertex="1">
+          <mxGeometry x="70" y="890" width="1720" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="24" value="Dynamic QUIC / MASQUE&lt;br/&gt;(Private + Public Transit)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#A855F7;strokeWidth=3;fontColor=#E2E8F0;fontSize=11;" parent="1" edge="1" source="7" target="8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="25" value="Direct Connect / 802.1Q&lt;br/&gt;Private VPC Routes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#F59E0B;strokeWidth=3;fontColor=#E2E8F0;fontSize=11;" parent="1" edge="1" source="12" target="15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="26" value="Tier-1 IP Transit&lt;br/&gt;BGP Per-Site /48" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#F43F5E;strokeWidth=3;fontColor=#E2E8F0;fontSize=11;" parent="1" edge="1" source="13" target="18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

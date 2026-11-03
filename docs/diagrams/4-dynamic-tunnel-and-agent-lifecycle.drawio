@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" modified="2026-09-03T20:30:00.000Z" agent="Datum Architecture Engine" version="24.0.0" type="device">
+  <diagram id="diagram-page" name="4. Dynamic Tunnel &amp; Agent Lifecycle">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1850" pageHeight="1100" background="#0F172A" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;b&gt;&lt;font size='5' color='#F8FAFC'&gt;DATUM CONNECT: DYNAMIC TUNNEL ARCHITECTURE &amp;amp; AGENT LIFECYCLE&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font color='#94A3B8' size='3'&gt;How Iroh P2P NAT Traversal, Cryptographic Identity, and MASQUE CONNECT-IP Operate in Practice&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#334155;fontColor=#FFFFFF;align=center;" parent="1" vertex="1">
+          <mxGeometry x="40" y="30" width="1770" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="&lt;b&gt;PHASE 1: INITIALIZATION &amp;amp; SUPERVISOR&lt;/b&gt;&lt;br/&gt;&lt;font color='#93C5FD'&gt;Two-Binary Architecture • State Isolation&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#0F172A;strokeColor=#3B82F6;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="50" y="130" width="390" height="850" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="&lt;b&gt;1. datumctl Invocation&lt;/b&gt;&lt;br/&gt;User or systemd executes:&lt;br/&gt;&lt;code&gt;datumctl connect tunnel run ...&lt;/code&gt;&lt;br/&gt;Go supervisor initializes." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#60A5FA;fontColor=#DBEAFE;" parent="1" vertex="1">
+          <mxGeometry x="70" y="190" width="350" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="&lt;b&gt;2. Subprocess Management&lt;/b&gt;&lt;br/&gt;Go supervisor spawns headless&lt;br/&gt;Rust binary &lt;code&gt;datum-connect&lt;/code&gt;.&lt;br/&gt;• Stderr ➔ Human status lines&lt;br/&gt;• Stdout ➔ JSON lifecycle events" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#60A5FA;fontColor=#DBEAFE;" parent="1" vertex="1">
+          <mxGeometry x="70" y="290" width="350" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="&lt;b&gt;3. Cryptographic Identity&lt;/b&gt;&lt;br/&gt;Generates/loads persistent Ed25519&lt;br/&gt;keypair in &lt;code&gt;~/.local/share/datumctl/&lt;/code&gt;.&lt;br/&gt;Public key (NodeId) serves as global cryptographic identity." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#60A5FA;fontColor=#DBEAFE;" parent="1" vertex="1">
+          <mxGeometry x="70" y="410" width="350" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="&lt;b&gt;4. Credential Resolution&lt;/b&gt;&lt;br/&gt;Executes credential helper via&lt;br/&gt;&lt;code&gt;DATUM_CREDENTIALS_HELPER&lt;/code&gt;.&lt;br/&gt;Acquires scoped OAuth token for&lt;br/&gt;Datum Cloud API authentication." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#60A5FA;fontColor=#DBEAFE;" parent="1" vertex="1">
+          <mxGeometry x="70" y="530" width="350" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="&lt;b&gt;5. Project Control Plane Bind&lt;/b&gt;&lt;br/&gt;Connects to Kubernetes API server.&lt;br/&gt;Reconciles &lt;code&gt;Connector&lt;/code&gt; custom resource with &lt;code&gt;PublicKey&lt;/code&gt; connection details." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#60A5FA;fontColor=#DBEAFE;" parent="1" vertex="1">
+          <mxGeometry x="70" y="645" width="350" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="&lt;b&gt;Key Benefit: Crash Isolation&lt;/b&gt;&lt;br/&gt;Supervisor restarts Rust binary on panic; isolates user credentials from child memory." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#0F2942;strokeColor=#38BDF8;fontColor=#E0F2FE;" parent="1" vertex="1">
+          <mxGeometry x="70" y="760" width="350" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="&lt;b&gt;PHASE 2: NAT TRAVERSAL &amp;amp; HOLE PUNCHING&lt;/b&gt;&lt;br/&gt;&lt;font color='#A7F3D0'&gt;Iroh P2P Engine • STUN / DERP • Zero Inbound Ports&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#064E3B;strokeColor=#10B981;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="470" y="130" width="410" height="850" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="&lt;b&gt;1. Discover Local &amp;amp; WAN Endpoints&lt;/b&gt;&lt;br/&gt;Agent probes local interfaces and contacts Home Relay via STUN.&lt;br/&gt;Learns public IP, mapped port, and NAT type (Cone vs Symmetric)." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#065F46;strokeColor=#34D399;fontColor=#ECFDF5;" parent="1" vertex="1">
+          <mxGeometry x="490" y="190" width="370" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="&lt;b&gt;2. Home Relay Registration&lt;/b&gt;&lt;br/&gt;Publishes reachable DERP endpoint to&lt;br/&gt;Datum Home Relay (e.g. &lt;code&gt;relay.ash.datum.net&lt;/code&gt;).&lt;br/&gt;Relay publishes /48 BGP prefix." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#065F46;strokeColor=#34D399;fontColor=#ECFDF5;" parent="1" vertex="1">
+          <mxGeometry x="490" y="305" width="370" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="&lt;b&gt;3. Simultaneous UDP Hole Punch&lt;/b&gt;&lt;br/&gt;Both endpoints exchange candidates out-of-band via relay.&lt;br/&gt;Simultaneously send UDP packets to punch holes in stateful firewalls." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#065F46;strokeColor=#34D399;fontColor=#ECFDF5;" parent="1" vertex="1">
+          <mxGeometry x="490" y="420" width="370" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="&lt;b&gt;4. Path Decision Matrix&lt;/b&gt;&lt;br/&gt;• &lt;b&gt;Direct P2P:&lt;/b&gt; If hole-punch succeeds, upgrade immediately to 0-RTT direct QUIC.&lt;br/&gt;• &lt;b&gt;Relay Fallback:&lt;/b&gt; If symmetric enterprise NAT blocks UDP, tunnel smoothly through Datum Relay over port 443." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#065F46;strokeColor=#34D399;fontColor=#ECFDF5;" parent="1" vertex="1">
+          <mxGeometry x="490" y="535" width="370" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="&lt;b&gt;5. Encrypted QUIC Handshake&lt;/b&gt;&lt;br/&gt;TLS 1.3 handshake authenticated by&lt;br/&gt;Ed25519 node keys. Perfect forward secrecy, immune to IP spoofing." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#065F46;strokeColor=#34D399;fontColor=#ECFDF5;" parent="1" vertex="1">
+          <mxGeometry x="490" y="675" width="370" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="&lt;b&gt;Zero Firewall Changes Needed&lt;/b&gt;&lt;br/&gt;Works through hotel Wi-Fi, strict enterprise NAT, and cellular without open ports." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#022C22;strokeColor=#10B981;fontColor=#D1FAE5;" parent="1" vertex="1">
+          <mxGeometry x="490" y="785" width="370" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="&lt;b&gt;PHASE 3: MASQUE PROTOCOL NEGOTIATION&lt;/b&gt;&lt;br/&gt;&lt;font color='#FED7AA'&gt;RFC 9484 CONNECT-IP • L3 Encapsulation&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#451A03;strokeColor=#F59E0B;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="910" y="130" width="410" height="850" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="&lt;b&gt;1. HTTP/3 CONNECT-IP Request&lt;/b&gt;&lt;br/&gt;Agent opens bidirectional QUIC stream and issues standard HTTP/3 extended CONNECT request for &lt;code&gt;masque://datum-gateway&lt;/code&gt;." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#78350F;strokeColor=#FBBF24;fontColor=#FEF3C7;" parent="1" vertex="1">
+          <mxGeometry x="930" y="190" width="370" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="&lt;b&gt;2. Capability Negotiation&lt;/b&gt;&lt;br/&gt;Gateway checks &lt;code&gt;Connector.spec.capabilities&lt;/code&gt;:&lt;br/&gt;• MASQUE (RFC 9484)&lt;br/&gt;• CONNECT-IP (L3 IP packets)&lt;br/&gt;• CONNECT-TCP (HTTP proxying)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#78350F;strokeColor=#FBBF24;fontColor=#FEF3C7;" parent="1" vertex="1">
+          <mxGeometry x="930" y="305" width="370" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="&lt;b&gt;3. Address &amp;amp; Route Assignment&lt;/b&gt;&lt;br/&gt;Gateway responds with 200 OK + Capsule Frames:&lt;br/&gt;• &lt;code&gt;ADDRESS_ASSIGN&lt;/code&gt;: 10.100.1.50/24&lt;br/&gt;• &lt;code&gt;ROUTE_ADVERTISEMENT&lt;/code&gt;: 172.31.0.0/16, ::/0" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#78350F;strokeColor=#FBBF24;fontColor=#FEF3C7;" parent="1" vertex="1">
+          <mxGeometry x="930" y="420" width="370" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="&lt;b&gt;4. Kernel Device Provisioning&lt;/b&gt;&lt;br/&gt;Agent creates virtual TUN interface (&lt;code&gt;datum0&lt;/code&gt;); binds to kernel VRF.&lt;br/&gt;Routes for target VPC subnets programmed into local routing table." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#78350F;strokeColor=#FBBF24;fontColor=#FEF3C7;" parent="1" vertex="1">
+          <mxGeometry x="930" y="540" width="370" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="&lt;b&gt;5. Capsule Frame Forwarding&lt;/b&gt;&lt;br/&gt;Raw IP packets routed to &lt;code&gt;datum0&lt;/code&gt; are encapsulated inside MASQUE IP capsules over QUIC datagrams." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#78350F;strokeColor=#FBBF24;fontColor=#FEF3C7;" parent="1" vertex="1">
+          <mxGeometry x="930" y="655" width="370" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="23" value="&lt;b&gt;IETF Standard Compliant&lt;/b&gt;&lt;br/&gt;Standard RFC 9484 wire format. Allows future browser WebTransport clients without proprietary clients." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#291500;strokeColor=#F59E0B;fontColor=#FEF3C7;" parent="1" vertex="1">
+          <mxGeometry x="930" y="765" width="370" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="24" value="&lt;b&gt;PHASE 4: LIVENESS &amp;amp; SELF-HEALING&lt;/b&gt;&lt;br/&gt;&lt;font color='#DDD6FE'&gt;Kube Lease Renewal • Seamless Migration&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#2E1065;strokeColor=#8B5CF6;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="1350" y="130" width="450" height="850" as="geometry" />
+        </mxCell>
+        <mxCell id="25" value="&lt;b&gt;1. HeartbeatAgent &amp;amp; LeaseRef&lt;/b&gt;&lt;br/&gt;Rust agent runs async heartbeat task. Periodically updates &lt;code&gt;coordination.k8s.io/v1 Lease&lt;/code&gt; referenced in &lt;code&gt;Connector.status.leaseRef&lt;/code&gt;.&lt;br/&gt;Guarantees operator knows agent is healthy." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#3B0764;strokeColor=#A855F7;fontColor=#F3E8FF;" parent="1" vertex="1">
+          <mxGeometry x="1370" y="190" width="410" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="26" value="&lt;b&gt;2. Failure Detection &amp;amp; Drop Prevention&lt;/b&gt;&lt;br/&gt;If agent process dies or loses network, Lease expires after 30s.&lt;br/&gt;Controller sets &lt;code&gt;Connector.status.Ready = False&lt;/code&gt;.&lt;br/&gt;Galactic routes smoothly re-converge to standby gateways." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#3B0764;strokeColor=#A855F7;fontColor=#F3E8FF;" parent="1" vertex="1">
+          <mxGeometry x="1370" y="310" width="410" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="27" value="&lt;b&gt;3. QUIC Connection Migration&lt;/b&gt;&lt;br/&gt;If physical IP changes (e.g. Wi-Fi ➔ Cellular, or laptop sleep/wake), QUIC connection ID persists!&lt;br/&gt;&lt;b&gt;Active TCP connections over MASQUE tunnel DO NOT DROP.&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#3B0764;strokeColor=#A855F7;fontColor=#F3E8FF;" parent="1" vertex="1">
+          <mxGeometry x="1370" y="435" width="410" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="28" value="&lt;b&gt;4. Auto-Reconnection &amp;amp; Retry&lt;/b&gt;&lt;br/&gt;If link drops entirely, agent executes exponential backoff.&lt;br/&gt;Re-probes STUN and relays.&lt;br/&gt;Transparently resumes session within milliseconds." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#3B0764;strokeColor=#A855F7;fontColor=#F3E8FF;" parent="1" vertex="1">
+          <mxGeometry x="1370" y="560" width="410" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="29" value="&lt;b&gt;5. Clean Teardown &amp;amp; GC&lt;/b&gt;&lt;br/&gt;On SIGTERM/Ctrl+C, supervisor notifies Rust child.&lt;br/&gt;Removes TUN interface, clears routes, and cleans up CRD status cleanly." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#3B0764;strokeColor=#A855F7;fontColor=#F3E8FF;" parent="1" vertex="1">
+          <mxGeometry x="1370" y="675" width="410" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="30" value="&lt;b&gt;Zero-Downtime Resilience&lt;/b&gt;&lt;br/&gt;Hardened against packet loss, route flaps, and dynamic interface switches." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#19053B;strokeColor=#C084FC;fontColor=#EDE9FE;" parent="1" vertex="1">
+          <mxGeometry x="1370" y="785" width="410" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="31" value="Child Spawned &amp;amp; Identity Ready" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#38BDF8;strokeWidth=2;fontColor=#E2E8F0;fontSize=11;" parent="1" edge="1" source="3" target="10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="32" value="P2P or Relay Path Established" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#10B981;strokeWidth=2;fontColor=#E2E8F0;fontSize=11;" parent="1" edge="1" source="10" target="17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="33" value="L3 Tunnel Active &amp;amp; Interfaces Up" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#F59E0B;strokeWidth=2;fontColor=#E2E8F0;fontSize=11;" parent="1" edge="1" source="17" target="24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
