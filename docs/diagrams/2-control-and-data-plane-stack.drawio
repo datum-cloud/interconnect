@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" modified="2026-09-03T20:30:00.000Z" agent="Datum Architecture Engine" version="24.0.0" type="device">
+  <diagram id="diagram-page" name="2. Architecture &amp; Protocol Stack">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1850" pageHeight="1100" background="#0F172A" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;b&gt;&lt;font size='5' color='#F8FAFC'&gt;DATUM INTERCONNECT: LAYERED CONTROL &amp;amp; DATA PLANE STACK&lt;/font&gt;&lt;/b&gt;&lt;br/&gt;&lt;font color='#94A3B8' size='3'&gt;Decoupled Architecture from Declarative Intent down to eBPF/XDP Kernel Datapaths&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#334155;fontColor=#FFFFFF;align=center;" parent="1" vertex="1">
+          <mxGeometry x="40" y="30" width="1770" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="&lt;b&gt;LAYER 1: WORKLOADS &amp;amp; USER INTENT&lt;/b&gt;&lt;br/&gt;&lt;font color='#94A3B8' size='2'&gt;Kubernetes Pods, VMs, Neocloud GPU Nodes, Developer Desktops, Enterprise Servers&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E293B;strokeColor=#475569;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="50" y="130" width="1750" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="&lt;b&gt;Neocloud AI Workload&lt;/b&gt;&lt;br/&gt;Pod / Host with 8x H100 GPUs&lt;br/&gt;Emits training sync &amp;amp; model API calls" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#2E1065;strokeColor=#7C3AED;fontColor=#EDE9FE;" parent="1" vertex="1">
+          <mxGeometry x="70" y="175" width="380" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="&lt;b&gt;NetworkInterfaceClaim&lt;/b&gt;&lt;br/&gt;Compute requests NIC without&lt;br/&gt;knowing internal VPC networking details" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#0F172A;strokeColor=#38BDF8;fontColor=#E2E8F0;" parent="1" vertex="1">
+          <mxGeometry x="480" y="175" width="400" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="&lt;b&gt;Hyperscaler Enterprise App&lt;/b&gt;&lt;br/&gt;AWS RDS PostgreSQL &amp;amp; S3 Lake&lt;br/&gt;Awaiting private replication" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#451A03;strokeColor=#D97706;fontColor=#FEF3C7;" parent="1" vertex="1">
+          <mxGeometry x="910" y="175" width="400" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="&lt;b&gt;Last-Mile Client / Edge Device&lt;/b&gt;&lt;br/&gt;datumctl connect tunnel listen&lt;br/&gt;Local service exposed to global VPC" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#064E3B;strokeColor=#059669;fontColor=#ECFDF5;" parent="1" vertex="1">
+          <mxGeometry x="1340" y="175" width="430" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="&lt;b&gt;LAYER 2: DECLARATIVE CONTROL PLANE (CRDs &amp;amp; OPERATORS)&lt;/b&gt;&lt;br/&gt;&lt;font color='#94A3B8' size='2'&gt;Automated Reconciliation across Management &amp;amp; Data Plane Clusters&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#0F172A;strokeColor=#0284C7;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="50" y="290" width="1750" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="&lt;b&gt;Connector &amp;amp; ConnectorClass&lt;/b&gt;&lt;br/&gt;Tracks client device liveness,&lt;br/&gt;ed25519 keys, capabilities (MASQUE, TCP)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#0369A1;strokeColor=#38BDF8;fontColor=#F0F9FF;" parent="1" vertex="1">
+          <mxGeometry x="70" y="345" width="330" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="&lt;b&gt;ConnectorAdvertisement&lt;/b&gt;&lt;br/&gt;Declares exported L3 subnets&lt;br/&gt;and L4 TCP/UDP target endpoints" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#0369A1;strokeColor=#38BDF8;fontColor=#F0F9FF;" parent="1" vertex="1">
+          <mxGeometry x="420" y="345" width="320" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="&lt;b&gt;ConnectorAttachment &amp;amp; VPC&lt;/b&gt;&lt;br/&gt;Binds connector cryptographic ID&lt;br/&gt;to isolated tenant VRF &amp;amp; allocates IP" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#0369A1;strokeColor=#38BDF8;fontColor=#F0F9FF;" parent="1" vertex="1">
+          <mxGeometry x="760" y="345" width="320" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="&lt;b&gt;NetworkGateway &amp;amp; NetworkRule&lt;/b&gt;&lt;br/&gt;Defines Anycast VIPs, Maglev&lt;br/&gt;backend sets, &amp;amp; DSR routing" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#0369A1;strokeColor=#38BDF8;fontColor=#F0F9FF;" parent="1" vertex="1">
+          <mxGeometry x="1100" y="345" width="330" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="&lt;b&gt;TrafficProtectionPolicy&lt;/b&gt;&lt;br/&gt;OWASP CRS Paranoia Levels,&lt;br/&gt;Rate Limiting, &amp;amp; DDoS shielding" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#0369A1;strokeColor=#38BDF8;fontColor=#F0F9FF;" parent="1" vertex="1">
+          <mxGeometry x="1450" y="345" width="320" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="&lt;b&gt;LAYER 3: DYNAMIC TUNNEL &amp;amp; CONNECTIVITY RUNTIME (Iroh + MASQUE)&lt;/b&gt;&lt;br/&gt;&lt;font color='#94A3B8' size='2'&gt;Overcoming Corporate NATs, Symmetric Firewalls, and Strict Network Boundaries&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#172554;strokeColor=#2563EB;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="50" y="480" width="1750" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="&lt;b&gt;datum-connect Agent&lt;/b&gt;&lt;br/&gt;Rust crate + Go supervisor&lt;br/&gt;Runs on hosts, containers, laptops&lt;br/&gt;STUN hole punch + QUIC streams" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E40AF;strokeColor=#60A5FA;fontColor=#EFF6FF;" parent="1" vertex="1">
+          <mxGeometry x="70" y="535" width="390" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="&lt;b&gt;Iroh Global Relay Mesh&lt;/b&gt;&lt;br/&gt;Stateless UDP relaying on port 443&lt;br/&gt;Provides 100% traversal fallback&lt;br/&gt;Site-specific routable /48 IPv6" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E40AF;strokeColor=#60A5FA;fontColor=#EFF6FF;" parent="1" vertex="1">
+          <mxGeometry x="490" y="535" width="410" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="&lt;b&gt;IETF MASQUE Protocol Suite&lt;/b&gt;&lt;br/&gt;RFC 9484 CONNECT-IP (L3 IP Tunnel)&lt;br/&gt;RFC 9298 CONNECT-UDP (Relaying)&lt;br/&gt;HTTP CONNECT-TCP (Proxying)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E40AF;strokeColor=#60A5FA;fontColor=#EFF6FF;" parent="1" vertex="1">
+          <mxGeometry x="930" y="535" width="410" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="&lt;b&gt;Dynamic IP Assignment&lt;/b&gt;&lt;br/&gt;Allocates client IP inside VPC space&lt;br/&gt;Distributes allowed routes via capsule&lt;br/&gt;HeartbeatAgent liveness renewal" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1E40AF;strokeColor=#60A5FA;fontColor=#EFF6FF;" parent="1" vertex="1">
+          <mxGeometry x="1370" y="535" width="400" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="&lt;b&gt;LAYER 4: HIGH-PERFORMANCE OVERLAY DATA PLANE (KERNEL &amp;amp; eBPF)&lt;/b&gt;&lt;br/&gt;&lt;font color='#94A3B8' size='2'&gt;Deterministic Hardware-Grade Routing, Isolation, and Load Balancing in Software&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#311042;strokeColor=#A855F7;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="50" y="670" width="1750" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="&lt;b&gt;SRv6 Micro-SID (uSID) Engine&lt;/b&gt;&lt;br/&gt;TC-eBPF decap &amp;amp; encap in kernel&lt;br/&gt;Compresses routing segment lists&lt;br/&gt;Direct Pod-to-Pod cross-cluster paths" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#581C87;strokeColor=#C084FC;fontColor=#FAF5FF;" parent="1" vertex="1">
+          <mxGeometry x="70" y="725" width="400" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="&lt;b&gt;Linux Kernel VRF Sandboxing&lt;/b&gt;&lt;br/&gt;Dedicated routing tables per tenant&lt;br/&gt;Guaranteed cryptographic multi-tenancy&lt;br/&gt;No leaky cross-tenant packet leaks" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#581C87;strokeColor=#C084FC;fontColor=#FAF5FF;" parent="1" vertex="1">
+          <mxGeometry x="500" y="725" width="400" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="&lt;b&gt;Stateless Maglev DSR (XDP)&lt;/b&gt;&lt;br/&gt;Line-rate native eBPF driver hook&lt;br/&gt;Consistent hash-ring load balancing&lt;br/&gt;Direct Server Return: 0 return overhead" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#581C87;strokeColor=#C084FC;fontColor=#FAF5FF;" parent="1" vertex="1">
+          <mxGeometry x="930" y="725" width="400" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="23" value="&lt;b&gt;Sharded Stateful NAT66 Egress&lt;/b&gt;&lt;br/&gt;Masquerades private VPC packets to GUA&lt;br/&gt;Atomic linear-probe port reservation&lt;br/&gt;Direct access to public internet APIs" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#581C87;strokeColor=#C084FC;fontColor=#FAF5FF;" parent="1" vertex="1">
+          <mxGeometry x="1360" y="725" width="410" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="24" value="&lt;b&gt;LAYER 5: GLOBAL UNDERLAY FABRIC &amp;amp; PHYSICAL TRANSIT&lt;/b&gt;&lt;br/&gt;&lt;font color='#94A3B8' size='2'&gt;FRR eBGP Fabric Router • Global Anycast • Tier-1 Transits • 17+ Metros&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#1C1917;strokeColor=#78716C;strokeWidth=2;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="50" y="860" width="1750" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="25" value="&lt;b&gt;fabric-router (FRR eBGP)&lt;/b&gt;&lt;br/&gt;Underlay BGP peering between physical nodes&lt;br/&gt;Global IPv6 unicast reachability on loopback" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#292524;strokeColor=#A8A29E;fontColor=#F5F5F4;" parent="1" vertex="1">
+          <mxGeometry x="70" y="915" width="400" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="26" value="&lt;b&gt;BGP EVPN L3VPN Control Plane&lt;/b&gt;&lt;br/&gt;Embedded GoBGP daemon in galactic-router&lt;br/&gt;Distributes tenant EVPN routes fleet-wide" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#292524;strokeColor=#A8A29E;fontColor=#F5F5F4;" parent="1" vertex="1">
+          <mxGeometry x="500" y="915" width="400" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="27" value="&lt;b&gt;Per-Site /48 BGP Route Advertisements&lt;/b&gt;&lt;br/&gt;Site-specific IPv6 allocations to Tier-1s&lt;br/&gt;Enables globally-routable iroh-relay endpoints" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#292524;strokeColor=#A8A29E;fontColor=#F5F5F4;" parent="1" vertex="1">
+          <mxGeometry x="930" y="915" width="400" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="28" value="&lt;b&gt;Physical Colocation &amp;amp; Cloud Interconnects&lt;/b&gt;&lt;br/&gt;Equinix Ashburn, Frankfurt, San Jose, etc.&lt;br/&gt;Direct Connect / Cloud Interconnect cross-connects" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#292524;strokeColor=#A8A29E;fontColor=#F5F5F4;" parent="1" vertex="1">
+          <mxGeometry x="1360" y="915" width="410" height="85" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
